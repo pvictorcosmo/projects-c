@@ -78,7 +78,6 @@ char type_pets[25];
 char nome_pets[255];
 char datanascpets[8];
 static int index = -1;
-printf("Valor:%i\nValor:%i",livres[0],livres[1]);
 for (i= 0; i < tam; i++) {
   if(livres[i] == 1 && livres_pet[i]==1){
     index = i;
@@ -112,8 +111,6 @@ strcpy(rend[index], rends);
 strcpy(datanasc[index], datanascs);
 strcpy(fones[index], fone);
 strcpy(cpfs[index],cpf);
-printf("index: %i", index);
-
 if(strlen(cpf)!=11 || strlen(nome)==0 || strlen(datanascs)!=8){
        printf("\nAs suas informacoes estavam incorretas, por favor, digite novamente\n");
        printf("Deseja fazer outro cadastro?(s/n):");
@@ -131,7 +128,6 @@ if(strlen(cpf)!=11 || strlen(nome)==0 || strlen(datanascs)!=8){
   }
 
 livres[index] = 0;
-printf("index: %i", index);
 strcpy(cpftest[index],cpf);
 }
 
@@ -142,7 +138,7 @@ void listar_contatos(){
      if(strlen(cpfs[i])==11 && strlen(nomes[i])!=0 && strlen(datanasc[i])==8){  
       
         printf("\nSeu cadastro foi feito com sucesso!\n");
-        printf("   DADOS DO CLIENTE:\ncodigo: %i\nRG:%s\nCPF:%.3s.%.3s.%.3s-%.2s\nnome:%s\nendereco:%s\nSua data de nascimento:%s\nrendimento:%s\ntelefone:%s\n   DADOS DO SEU PET:\nCodigo: %i\nNome: %s\nTipo: %s\nData de nascimento:%s\n",cod[i], rgs[i],cpfs[i], nomes[i], end[i],datanasc[i],rend[i],fones[i],codpet[i],nome_pet[i],type_pet[i],datanascpet[i]);
+        printf("   DADOS DO CLIENTE:\ncodigo: %i\nRG:%s\nCPF:%s\nnome:%s\nendereco:%s\nSua data de nascimento:%s\nrendimento:%s\ntelefone:%s\n   DADOS DO SEU PET:\nCodigo: %i\nNome: %s\nTipo: %s\nData de nascimento:%s\n",cod[i], rgs[i],cpfs[i], nomes[i], end[i],datanasc[i],rend[i],fones[i],codpet[i],nome_pet[i],type_pet[i],datanascpet[i]);
         printf("Deseja fazer outro cadastro?(s/n):");
         scanf("%s", &resp);
           //Fazendo cadastro da pessoa e printando as informações na tela
@@ -168,7 +164,6 @@ char type_pets[25];
 char nome_pets[255];
 char datanascpets[8];
 static int index = -1;
-printf("Valor:%i\nValor:%i",livres[0],livres_pet[0]);
 for (i= 0; i < tam; i++) {
   if(livres_pet[i]==1){
     index = i;
@@ -191,7 +186,7 @@ livres_pet[i]=0;
 void alterar_usuario(){
     int i,codtest;
     char type_test[25];
-    printf("\nVoce tem algumas opções:\nFuncionalidades do usuario:\nDigite 'x' para excluir um usuario\nDigite 'c' para alterar um usuario\nDigite 'i' para buscar um cadastro pelo codigo\nDigite 'r' para mostrar pessoas que tenham um tipo especifico de pet\nDigite 'z' para listar os cadastros em ordem alfabetica\nFuncionalidades do pet?\nDigite 'p' para excluir um pet\nDigite 'l' para alterar um pet\n ");
+    printf("\nVoce tem algumas opções:\nFuncionalidades do usuario:\nDigite 'x' para excluir um usuario\nDigite 'c' para alterar um usuario\nDigite 'i' para buscar um cadastro pelo codigo\nDigite 'r' para mostrar pessoas que tenham um tipo especifico de pet\nDigite 'z' para listar os cadastros em ordem alfabetica\nFuncionalidades do pet:\nDigite 'p' para excluir um pet\nDigite 'l' para alterar um pet\nDigite 'q' para inserir um novo pet em uma cadastro");
     scanf("%s",&resp3);
     if(resp3=='x'){
       printf("Digite o codigo do usuario que deseja excluir:");    
@@ -201,8 +196,7 @@ void alterar_usuario(){
         if(codtest==cod[i]){
             printf("Usuario excluido com sucesso!");
             livres[i]=1;
-            break;
-            
+            break;  
         }
         }
       }
@@ -269,9 +263,15 @@ void alterar_usuario(){
         if(livres[i]==0 || livres_pet[i]==0){
           if(strcmp(type_test,type_pet[i])==0){
             printf("   DADOS DO CLIENTE:\ncodigo: %i\nRG:%s\nCPF:%s\nnome:%s\nendereco:%s\nSua data de nascimento:%s\nrendimento:%s\ntelefone:%s\n   DADOS DO SEU PET:\nCodigo: %i\nNome: %s\nTipo: %s\nData de nascimento:%s\n",cod[i], rgs[i],cpfs[i], nomes[i], end[i],datanasc[i],rend[i],fones[i],codpet[i],nome_pet[i],type_pet[i],datanascpet[i]);
+            //Testa o tipo do pet pra mostrar eles depois
           }
         }
       }
+    }
+    if(resp3=='q'){
+      printf("Digite o código do usuario que deseja adicionar um pet");    
+      scanf("%s", &codtest);
+      
     }
  printf("Deseja mostrar todos os cadastros?:");
  scanf("%s", &resp);
