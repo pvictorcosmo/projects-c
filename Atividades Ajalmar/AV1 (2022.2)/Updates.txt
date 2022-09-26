@@ -6,3 +6,5 @@
 -A parte de excluir ta feita, so falta aperfeiçoar pra poder voltar pro programa principal
 -A parte de alterar e mostrar em ordem alfabetica tambem ta feita, concluindo a parte de pessoas dentro do programa
 -Problemas pra mudar o scanf dos dados pra deixar colocar espaços no nome
+26.09.22
+-Implementei a função de busca pelo codigo, porem o scanf continua com problema, não esquecer de fazer mudanças

@@ -142,7 +142,7 @@ void listar_contatos(){
      if(strlen(cpfs[i])==11 && strlen(nomes[i])!=0 && strlen(datanasc[i])==8){  
       
         printf("\nSeu cadastro foi feito com sucesso!\n");
-        printf("   DADOS DO CLIENTE:\ncodigo: %i\nRG:%s\nCPF:%s\nnome:%s\nendereco:%s\nSua data de nascimento:%s\nrendimento:%s\ntelefone:%s\n   DADOS DO SEU PET:\nCodigo: %i\nNome: %s\nTipo: %s\nData de nascimento:%s\n",cod[i], rgs[i],cpfs[i], nomes[i], end[i],datanasc[i],rend[i],fones[i],codpet[i],nome_pet[i],type_pet[i],datanascpet[i]);
+        printf("   DADOS DO CLIENTE:\ncodigo: %i\nRG:%s\nCPF:%.3s.%.3s.%.3s-%.2s\nnome:%s\nendereco:%s\nSua data de nascimento:%s\nrendimento:%s\ntelefone:%s\n   DADOS DO SEU PET:\nCodigo: %i\nNome: %s\nTipo: %s\nData de nascimento:%s\n",cod[i], rgs[i],cpfs[i], nomes[i], end[i],datanasc[i],rend[i],fones[i],codpet[i],nome_pet[i],type_pet[i],datanascpet[i]);
         printf("Deseja fazer outro cadastro?(s/n):");
         scanf("%s", &resp);
           //Fazendo cadastro da pessoa e printando as informações na tela
@@ -155,7 +155,7 @@ void listar_contatos(){
 
 void cadastros(){
 int i;
-printf("Voce tem tais cadastros:");
+printf("Voce tem tais cadastros:\n");
 for(i=0;i<tam;i++){
     if(livres[i]==0 && livres_pet[i]==0){
     printf("   DADOS DO CLIENTE:\ncodigo: %i\nRG:%s\nCPF:%s\nnome:%s\nendereco:%s\nSua data de nascimento:%s\nrendimento:%s\ntelefone:%s\n   DADOS DO SEU PET:\nCodigo: %i\nNome: %s\nTipo: %s\nData de nascimento:%s\n",cod[i], rgs[i],cpfs[i], nomes[i], end[i],datanasc[i],rend[i],fones[i],codpet[i],nome_pet[i],type_pet[i],datanascpet[i]);
@@ -190,7 +190,8 @@ livres_pet[i]=0;
 }
 void alterar_usuario(){
     int i,codtest;
-    printf("\nVoce tem algumas opções:\nDigite 'x' para excluir um usuario\nDigite 'p' para excluir um pet\nDigite 'c' para alterar um usuario\nDigite 'l' para alterar um pet\nDigite 'z' para listar os cadastros em ordem alfabetica\n");
+    char type_test[25];
+    printf("\nVoce tem algumas opções:\nFuncionalidades do usuario:\nDigite 'x' para excluir um usuario\nDigite 'c' para alterar um usuario\nDigite 'i' para buscar um cadastro pelo codigo\nDigite 'r' para mostrar pessoas que tenham um tipo especifico de pet\nDigite 'z' para listar os cadastros em ordem alfabetica\nFuncionalidades do pet?\nDigite 'p' para excluir um pet\nDigite 'l' para alterar um pet\n ");
     scanf("%s",&resp3);
     if(resp3=='x'){
       printf("Digite o codigo do usuario que deseja excluir:");    
@@ -241,12 +242,36 @@ void alterar_usuario(){
       scanf("%i", &codtest);
       for(i=0;i<tam;i++){
         if(livres[i]==0 && livres_pet[i]==0){
-        if(cod[i]==codtest || codpet[i]==codtest){
+          if(cod[i]==codtest || codpet[i]==codtest){
             livres_pet[i]=1;
             inserir_pet();
-                }
-            }   
+          }
+        }   
+      }
+    }
+    if(resp3=='i'){
+      printf("Digite o codigo do usuario acessar:");    
+      scanf("%i", &codtest);
+      for(i=0;i<tam;i++){
+        if(livres[i]==0){
+          if(cod[i]==codtest){
+            printf("Estes sao dos dados do cliente [%i]:\n ", cod[i]);
+            printf("   DADOS DO CLIENTE:\ncodigo: %i\nRG:%s\nCPF:%s\nnome:%s\nendereco:%s\nSua data de nascimento:%s\nrendimento:%s\ntelefone:%s\n",cod[i], rgs[i],cpfs[i], nomes[i], end[i],datanasc[i],rend[i],fones[i],codpet[i]);
+          }
         }
+      }
+
+    }
+    if(resp3=='r'){
+      printf("Digite o tipo pet para acessar:");    
+      scanf("%s", &type_test);
+      for(i=0;i<tam;i++){
+        if(livres[i]==0 || livres_pet[i]==0){
+          if(strcmp(type_test,type_pet[i])==0){
+            printf("   DADOS DO CLIENTE:\ncodigo: %i\nRG:%s\nCPF:%s\nnome:%s\nendereco:%s\nSua data de nascimento:%s\nrendimento:%s\ntelefone:%s\n   DADOS DO SEU PET:\nCodigo: %i\nNome: %s\nTipo: %s\nData de nascimento:%s\n",cod[i], rgs[i],cpfs[i], nomes[i], end[i],datanasc[i],rend[i],fones[i],codpet[i],nome_pet[i],type_pet[i],datanascpet[i]);
+          }
+        }
+      }
     }
  printf("Deseja mostrar todos os cadastros?:");
  scanf("%s", &resp);
