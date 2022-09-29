@@ -75,8 +75,7 @@ void insert_clients(){
   }
   livres[index] = 0;
   strcpy(cpftest[index],cpf);
-  printf("Deseja fazer outro cadastro?(s/n):");
-  scanf("%s", &resp);
+
 }
 
 void list_clients(){ 
@@ -101,7 +100,6 @@ void register_users(){
   for(i=0;i<tam;i++){
     if(livres[i]==0){
       printf("   DADOS DO CLIENTE:\ncodigo: %i\nRG:%s\nCPF:%s\nnome:%s\nendereco:%s\nSua data de nascimento:%s\nrendimento:%s\ntelefone:%s\n",cod[i], rgs[i],cpfs[i], nomes[i], end[i],datanasc[i],rend[i],fones[i]);
-      list_pets();
     }
   }
 }
@@ -109,7 +107,7 @@ void register_users(){
 void funcs_users(){
     int i,codtest;
     char type_test[25];
-    printf("\nVoce tem algumas opções:\nFuncionalidades do usuario:\nDigite 'x' para excluir um usuario\nDigite 'c' para alterar um usuario\nDigite 'i' para buscar um cadastro pelo codigo\nDigite 'r' para mostrar pessoas que tenham um tipo especifico de pet\nDigite 'z' para listar os cadastros em ordem alfabetica\n");
+    printf("\nVoce tem algumas opcoes:\nFuncionalidades do usuario:\nDigite 'x' para excluir um usuario\nDigite 'c' para alterar um usuario\nDigite 'i' para buscar um cadastro pelo codigo\nDigite 'r' para mostrar pessoas que tenham um tipo especifico de pet\nDigite 'z' para listar os cadastros em ordem alfabetica\nFuncionalidades do pet:\nDigite 'p' para excluir um pet\nDigite 'l' para alterar um pet\nDigite 'n' para adcionar um novo pet");
     scanf("%s",&resp3);
 
     if(resp3=='x'){
@@ -154,21 +152,59 @@ void funcs_users(){
     if(resp3=='r'){
       printf("Digite o tipo pet para acessar:");    
       scanf("%s", &type_test);
-      for(i=0;i<tam;i++){
-        if(livres[i]==0 || livres_pet[i]==0){
-          if(strcmp(type_test,type_pet[i])==0){
-            list_clients();
-            list_pets();
+      for(i=0;i<tam;i++)
+        for(j=0;j<pets;j++){
+          if(livres[i]==0 || livres_pet[i][j]==0){
+            if(strcmp(type_test,type_pet[i][j])==0){
+              list_clients();
+              list_pets();
             //Testa o tipo do pet pra mostrar eles depois
+            }
           }
         }
       }
-    }
     if(resp3=='z'){
-      ordem_alfabetica();
     }
+    if(resp3=='p'){
+    printf("Digite o codigo do usuario ou do pet que deseja alterar:");    
+    scanf("%i", &codtest);
+    for(i=0;i<tam;i++){
+      for(j=0;j<pets;j++){
+        if(livres_pet[i][j]==0){
+          if(codtest==codpet[i][j]) {
+            printf("pet excluido com sucesso!");
+            livres_pet[i][j]=1;
+            break;
+          }
+        }
+      }      
+    }  
+  }
+  if(resp3=='l'){
+    printf("Digite o codigo do pet que deseja alterar:");    
+    scanf("%i", &codtest);
+    for(i=0;i<tam;i++){
+      for(j=0;j<pets;j++){
+        if(livres_pet[i][j]==0){
+          if(codpet[i][j]==codtest){
+            livres_pet[i][j]=1;
+            insert_pets();
+          }
+        }
+      }   
+    }
+  }
+  if(resp3=='n'){
+    printf("Digite o codigo do usuario que deseja adicionar um novo pet:");    
+    scanf("%i", &codtest);
+    for(i=0;i<tam;i++){
+      if(cod[i]==codtest){
+        insert_pets();     
+      }    
+    }
+  }
+  printf("Deseja mostrar todos os cadastros?:");
+  scanf("%s", &resp);
     
- printf("Deseja mostrar todos os cadastros?:");
- scanf("%s", &resp);
 }
 

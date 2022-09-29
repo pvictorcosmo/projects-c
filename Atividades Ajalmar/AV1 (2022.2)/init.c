@@ -1,6 +1,4 @@
-#include <string.h>
-#include <stdlib.h>
-#include <time.h>
+
 #include "init.h"
 #include "pessoa.h"
 #include "pet.h"
@@ -15,8 +13,27 @@ void start(){
   }
   for(i=0;i<tam;i++){
     cod[i]= 100+rand()%900;
+    testcode=cod[i];
+    for(j=0;j<tam;j++){
+    if(testcode==cod[j]){
+    cod[j]= 100+rand()%900;
+
+    }
+    }
+
   }
-  for(i=0;i<=120;i++){
-    codpet[i]=100+rand()%900;
+  for(i=0;i<tam;i++){
+    for(j=0;j<pets;j++){
+    codpet[i][j]=100+rand()%900;
+    testcode=codpet[i][j];
+    for(g=0;g<tam;g++){
+        for(h=0;h<pets;h++){
+            if(testcode==codpet[g][h]){
+                codpet[g][h]=100+rand()%900;
+            }
+        }
+    }
+    }
   }
 }
+

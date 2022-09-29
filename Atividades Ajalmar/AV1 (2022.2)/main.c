@@ -1,10 +1,7 @@
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
-#include <time.h>
+#include<stdio.h>
 #include "init.h"
-#include "pessoa.c"
-#include "pet.c"
+#include "pessoa.h"
+#include "pet.h"
 
 int main() {
 srand(time(NULL));
@@ -22,8 +19,8 @@ if(init=='n'){
   }while(resp=='s');
   do{
     register_users();
+    list_pets();
     funcs_users();
-    funcs_pets();
   }while(resp=='s');
   
   /*O código vai funcionar enquanto a resposta for s, a nao ser que a pessoa ja tenha um cadastro, se a resposta for n, o código vai mostrar todos listados
