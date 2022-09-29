@@ -10,3 +10,5 @@
 -Implementei a função de busca pelo codigo, porem o scanf continua com problema, não esquecer de fazer mudanças
 27.09.22
 -Fiz um vetor bidimensional para comportar um pet, ou seja, uma pessoa pode ter no maximo 4 pets
+28.08.22 
+-Deixei o vetor bidimensional pra resolver depois, agora vou começar o projeto dos arquivos .c e.h
