@@ -58,7 +58,7 @@ void insert_clients(){
   strcpy(end[index], ends);
   strcpy(rend[index], rends);
   strcpy(datanasc[index], datanascs);
-  strcpy(fones[index], fone);
+  strcpy(fones[index], fone);                 
   strcpy(cpfs[index],cpf);
   if(strlen(cpf)!=11 || strlen(nome)==0 || strlen(datanascs)!=8){
     printf("\nAs suas informacoes estavam incorretas, por favor, digite novamente\n");
