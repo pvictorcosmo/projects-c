@@ -17,4 +17,4 @@ void list_clients();
 
 void register_users();
 
-void funcs_users();
+void funcs_users_pets();

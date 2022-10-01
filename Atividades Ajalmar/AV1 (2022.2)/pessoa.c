@@ -1,30 +1,16 @@
 #include "init.h"
 #include "pessoa.h"
 #include "pet.h"
-/*void ordem_alfabetica(){
-  for(i=0;i<tam;i++){
-    if(livres[i]==0){    
-      for(j= 0; j < 26; j++){
-        if(nomes[i][0] == alf[j]|| nomes[i][0] == alfb[j]){
-          printf("\n[ codigo: %i\nRG:%s\nCPF:%s\nnome:%s\nendereco:%s\nSua data de nascimento:%c\nrendimento:[R$%s]\ntelefone:%s ]",cod[i], rgs[i],cpfs[i], nomes[i], end[i],datanasc[i],rend[i],fones[i]);
-            //testa valores daquela string do alfabeto e imprime na ordem(GENIAL APENAS POR FAVOR MIM AGRADEÇA CAROL)
-        }        
-      }
-    }
-  }
-}
-*/
+
+
 void insert_clients(){
   char  datanascs[8];
   char  rends[20];
   char ends[255];
-  char rg[12];
+  char rg[12]={0};
   char cpf[12];
   char nome[255];
   char fone[20];
-  char type_pets[25];
-  char nome_pets[255];
-  char datanascpets[8];
   static int index = -1;
   for (i= 0; i < tam; i++) {
     if(livres[i] == 1){
@@ -38,21 +24,35 @@ void insert_clients(){
       //Não vai funcionar se não houver espaços em branco
 }
   printf("Qual seu RG?:");
-  scanf("%s", &rg);
+  fflush(stdin);
+  fgets(rg,12,stdin);
   printf("Qual seu CPF?:");
-  scanf("%s", &cpf);
+  fflush(stdin);
+  fgets(cpf,12,stdin);
   printf("Qual seu Nome?:");
-  scanf("%s", &nome);
+  fflush(stdin);
+  fgets(nome,255,stdin);
   printf("Qual seu Endereco?:");
-  scanf("%s", &ends);
+  fflush(stdin);
+  fgets(ends,255,stdin);
   printf("Qual sua data de nascimento?:");
-  scanf("%s", &datanascs);
+  fgets(datanascs,9,stdin);
   printf("Qual seu telefone?:");
-  scanf("%s", &fone);
+  fflush(stdin);
+  fgets(fone,20,stdin);
   printf("Qual seu rendimento?:");
-  scanf("%s", &rends);
+  fflush(stdin);
+  fgets(rends,20,stdin);
   printf("\nOk! Agora vou fazer perguntas referentes ao seu pet!\n");
-
+    //fgets é pra pegar as strings com espaço, o fflush serve pra tirar todo o lixo da string
+  datanascs[strcspn(datanascs,"\n")]=0;
+  rends[strcspn(rends,"\n")]=0;
+  ends[strcspn(ends,"\n")]=0;
+  rg[strcspn(rg,"\n")]=0;
+  cpf[strcspn(cpf,"\n")]=0;
+  nome[strcspn(nome,"\n")]=0;
+  fone[strcspn(fone,"\n")]=0;
+    //Esses comandos são para o comando fgets ignorar o \n, pois ele normalmente adiciona um \n na string, mas a gente quer que elas não tenham tanto espaço
   strcpy(nomes[index], nome);
   strcpy(rgs[index], rg);
   strcpy(end[index], ends);
@@ -68,7 +68,7 @@ void insert_clients(){
   for(j=0;j<tam;j++){
     if(strcmp(cpf,cpftest[j])==0){
       printf("\nVoce ja tem um cadastro aqui, Esses sao os  dados:\n");
-      printf("   DADOS DO CLIENTE:\ncodigo: %i\nRG:%s\nCPF:%s\nnome:%s\nendereco:%s\nSua data de nascimento:%s\nrendimento:%s\ntelefone:%s\n",cod[j], rg,cpf, nome, ends,datanascs,rend,fone);
+      printf("   DADOS DO CLIENTE:\nCodigo: %i\nRG:%sCPF:%sNome:%sEndereco:%sSua data de nascimento:%sRendimento:%sTelefone:%s",cod[j], rg,cpf, nome, ends,datanascs,rend,fone);
       list_pets();
         //Este laço testa os valores pra ver se ja tem algum cadastro    
     } 
@@ -84,6 +84,7 @@ void list_clients(){
       if(strlen(cpfs[i])==11 && strlen(nomes[i])!=0 && strlen(datanasc[i])==8){  
         printf("\nSeu cadastro foi feito com sucesso!\n");
         printf("   DADOS DO CLIENTE:\ncodigo: %i\nRG:%s\nCPF:%s\nnome:%s\nendereco:%s\nSua data de nascimento:%s\nrendimento:%s\ntelefone:%s\n",cod[i], rgs[i],cpfs[i], nomes[i], end[i],datanasc[i],rend[i],fones[i]);
+        space();
         list_pets();
         printf("Deseja fazer outro cadastro?(s/n):");
         scanf("%s", &resp);
@@ -100,15 +101,21 @@ void register_users(){
   for(i=0;i<tam;i++){
     if(livres[i]==0){
       printf("   DADOS DO CLIENTE:\ncodigo: %i\nRG:%s\nCPF:%s\nnome:%s\nendereco:%s\nSua data de nascimento:%s\nrendimento:%s\ntelefone:%s\n",cod[i], rgs[i],cpfs[i], nomes[i], end[i],datanasc[i],rend[i],fones[i]);
+     
     }
   }
 }
 
-void funcs_users(){
+void funcs_users_pets(){
     int i,codtest;
     char type_test[25];
-    printf("\nVoce tem algumas opcoes:\nFuncionalidades do usuario:\nDigite 'x' para excluir um usuario\nDigite 'c' para alterar um usuario\nDigite 'i' para buscar um cadastro pelo codigo\nDigite 'r' para mostrar pessoas que tenham um tipo especifico de pet\nDigite 'z' para listar os cadastros em ordem alfabetica\nFuncionalidades do pet:\nDigite 'p' para excluir um pet\nDigite 'l' para alterar um pet\nDigite 'n' para adcionar um novo pet");
+    space();
+    printf("Funcionalidades do usuario:\nDigite 'x' para excluir um usuario\nDigite 'c' para alterar um usuario\nDigite 'i' para buscar um cadastro pelo codigo\nDigite 'r' para mostrar pessoas que tenham um tipo especifico de pet\nDigite 'z' para listar os cadastros em ordem alfabetica\n");
+    space();
+    printf("Funcionalidades do pet:\nDigite 'p' para excluir um pet\nDigite 'l' para alterar um pet\nDigite 'n' para adicionar um novo pet\n");
+    printf("       [");
     scanf("%s",&resp3);
+    printf(" ]");
 
     if(resp3=='x'){
       printf("Digite o codigo do usuario que deseja excluir:");    

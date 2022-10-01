@@ -12,3 +12,6 @@
 -Fiz um vetor bidimensional para comportar um pet, ou seja, uma pessoa pode ter no maximo 4 pets
 28.08.22 
 -Deixei o vetor bidimensional pra resolver depois, agora vou começar o projeto dos arquivos .c e.h
+
+01.10.22
+-Modificações no programa(por enquanto só alguns detalhes pra finalizar)

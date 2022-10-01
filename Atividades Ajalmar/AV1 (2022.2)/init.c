@@ -2,6 +2,7 @@
 #include "init.h"
 #include "pessoa.h"
 #include "pet.h"
+
 void start(){
   for (i= 0; i < tam; i++) {
     livres[i] = 1;
@@ -35,5 +36,9 @@ void start(){
     }
     }
   }
+}
+
+void space(){
+  printf("##################################\n");
 }
 

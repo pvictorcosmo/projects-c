@@ -31,14 +31,21 @@ void insert_pets(){
   }
   printf("indextam=%i\nindexpet=%i", indextam,indexpet);
   printf("Qual o nome do seu pet?:");
-  scanf("%s", &nome_pets);
+  fflush(stdin);
+  fgets(nome_pets,255,stdin);
   printf("Qual o tipo do seu pet?:");
-  scanf("%s", &type_pets);
+  fflush(stdin);
+  fgets(type_pets,25,stdin);
   printf("Qual a data de nascimento do seu pet?:");
-  scanf("%s", &datanascpets);
+  fflush(stdin);
+  fgets(datanascpets,8,stdin);
+    //fgets é pra pegar as strings com espaço, o fflush serve pra tirar todo o lixo da string
+  datanascpets[strcspn(datanascpets,"\n")]=0;
+  nome_pets[strcspn(nome_pets,"\n")]=0;
+  type_pets[strcspn(type_pets,"\n")]=0;
+    //Esses comandos são para o comando fgets ignorar o \n, pois ele normalmente adiciona um \n na string, mas a gente quer que elas não tenham tanto espaço
   strcpy(datanascpet[indextam][indexpet], datanascpets);
   strcpy(type_pet[indextam][indexpet], type_pets);
-  strcpy(nome_pet[indextam][indexpet],nome_pets);
+  strcpy(nome_pet[indextam][indexpet], nome_pets);
   livres_pet[i][j]=0;
-  printf("codigo[i][j]=%i\n, codigo[i][j]=%i\n", livres_pet[0][0],livres_pet[0][1]);
 }
