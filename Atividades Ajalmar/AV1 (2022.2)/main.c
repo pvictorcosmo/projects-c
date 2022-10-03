@@ -9,20 +9,18 @@ int main() {
   start();
 
   printf("Seja bem vindo!\nPara acessar cadastro precisamos dos dados\n");
-  printf("Digite 'n' para adicionar um novo usuario!:  [");
+  printf("Digite 'n' para adicionar um novo usuario!:");
   scanf("%s",&init);
-  printf("]");
-
+  system("cls");
 if(init=='n'){
   do{
     insert_clients();
     insert_pets();
     list_clients();
   }while(resp=='s');
+  system("cls");
   do{
     register_users();
-    space();
-    list_pets();
     funcs_users_pets();
   }while(resp=='s');
   
