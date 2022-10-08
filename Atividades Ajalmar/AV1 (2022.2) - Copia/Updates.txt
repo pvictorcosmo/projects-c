@@ -1,0 +1,17 @@
+24.09.22
+-Fiz a base do programa e criei todas as variaveis, falta toda a parte de interface e criação dos pets e a associação dos mesmos com os codigos
+-Melhorar o sistema de códigos(Quando compilar ele associa o mesmo código pra dois clientes diferentes)
+25.09.22
+-Resolvi o bug dos sistemas de codigos definindo o vetor de livres que antes era char pra int
+-A parte de excluir ta feita, so falta aperfeiçoar pra poder voltar pro programa principal
+-A parte de alterar e mostrar em ordem alfabetica tambem ta feita, concluindo a parte de pessoas dentro do programa
+-Problemas pra mudar o scanf dos dados pra deixar colocar espaços no nome
+26.09.22
+-Implementei a função de busca pelo codigo, porem o scanf continua com problema, não esquecer de fazer mudanças
+27.09.22
+-Fiz um vetor bidimensional para comportar um pet, ou seja, uma pessoa pode ter no maximo 4 pets
+28.08.22 
+-Deixei o vetor bidimensional pra resolver depois, agora vou começar o projeto dos arquivos .c e.h
+
+01.10.22
+-Modificações no programa(por enquanto só alguns detalhes pra finalizar)
