@@ -37,9 +37,21 @@ void start(){
     }
   }
 
+  for(i=0;i<tam;i++){
+    datanasc[i]=NULL;
+    rend[i]=NULL;
+    cpftest[j]=NULL;
+    nomes[i]=NULL;
+    end[i]=NULL;
+    fones[i]=NULL;
+    rgs[i]=NULL;
+  }
+
 }
 
 void space(){
   printf("##################################\n");
 }
+
+
 

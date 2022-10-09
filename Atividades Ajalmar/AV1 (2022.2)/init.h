@@ -4,7 +4,8 @@
 #include <time.h>
 #include<conio.h>
 
-int i,j,g,h;
+int i,j,g,h,J,I;
+int aux;
 int testcode;
 int resp3;
 char resp2[12];

@@ -15,3 +15,7 @@
 
 01.10.22
 -Modificações no programa(por enquanto só alguns detalhes pra finalizar)
+
+09.10.22
+-Modificações no código para se encaixar no modelo de função e função UI, além de 
+alterar para ponteiros com memoria alocada
