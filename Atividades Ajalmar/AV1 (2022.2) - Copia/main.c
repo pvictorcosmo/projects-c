@@ -16,7 +16,8 @@ int main() {
   system("cls");
 if(init=='n'){
   do{
-    insert_clients_ui();    
+    insert_user_ui();
+    insert_pets_ui();    
     list_clients_ui();
   }while(resp=='s');
   system("cls");

@@ -11,6 +11,12 @@ void list_pets();
 
 void insert_pets();
 
+void insert_pets_ui();
+
+void delete_pet(int codtest);
+
+void test_type(char type_test[]);
+
 void alt_insert_pets();
 
 void order_alf_pets();

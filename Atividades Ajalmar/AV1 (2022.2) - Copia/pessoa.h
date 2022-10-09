@@ -28,4 +28,4 @@ void alt_user_ui();
 
 void funcs_clients_ui();
 
-void insert_clients_ui();
+void insert_user_ui();
