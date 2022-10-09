@@ -4,6 +4,8 @@
 #include "pet.h"
 
 int main() {
+
+  
   srand(time(NULL));
 
   start();
@@ -14,21 +16,21 @@ int main() {
   system("cls");
 if(init=='n'){
   do{
-    insert_clients();
-    insert_pets();
-    list_clients();
+    insert_clients_ui();    
+    list_clients_ui();
   }while(resp=='s');
   system("cls");
   do{
-    register_users();
-    funcs_users_pets();
+    clients_ui();
+    funcs_clients_ui();
   }while(resp=='s');
   
-  /*O código vai funcionar enquanto a resposta for s, a nao ser que a pessoa ja tenha um cadastro, se a resposta for n, o código vai mostrar todos listados
-  */
+  /*O código vai funcionar enquanto a resposta for s, a nao ser que a pessoa ja tenha um cadastro, se a resposta for n, o código vai mostrar todos listados*/
+  
 }else if(init=='c'){
 }
   
 return 0;
 system("pause");
 }
+

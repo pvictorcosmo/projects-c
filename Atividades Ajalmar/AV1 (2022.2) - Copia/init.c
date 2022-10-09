@@ -39,8 +39,8 @@ void start(){
 
   for(i=0;i<tam;i++){
     datanasc[i]=NULL;
-    cpftest[i]=NULL;
     rend[i]=NULL;
+    cpftest[j]=NULL;
     nomes[i]=NULL;
     end[i]=NULL;
     fones[i]=NULL;

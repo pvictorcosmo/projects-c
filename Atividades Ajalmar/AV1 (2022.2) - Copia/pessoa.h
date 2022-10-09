@@ -10,15 +10,22 @@ char *end[tam];
 char *fones[tam];
 char *rgs[tam];
 char aux_user[255];
+int codtest;
 
-void insert_clients();
+void insert_clients(char rg[],char cpf[],char nome[],char ends[],char datanascs[],char fone[],char rends[]);
 
-void list_clients();
+void list_clients_ui();
 
-void clients();
-
-void register_users();
+void clients_ui();
 
 void order_alf_user();
 
-void funcs_users_pets();
+int delete_user(int codtest);
+
+void alt_user(char rg[],char cpf[],char nome[],char ends[],char datanascs[],char fone[],char rends[]);
+
+void alt_user_ui();
+
+void funcs_clients_ui();
+
+void insert_clients_ui();

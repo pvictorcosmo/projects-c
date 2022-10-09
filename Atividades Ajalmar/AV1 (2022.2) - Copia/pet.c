@@ -49,7 +49,9 @@ void insert_pets(){
   livres_pet[i][0]=0;
   printf("[0pet]=%i [1pet]=%i [0][1]=%i", livres_pet[0][0],livres_pet[1][0],livres_pet[0][1]);
 }
-
+void inser_pets_ui(){
+  
+}
 void alt_insert_pets(){
   char type_pets[25];
   char nome_pets[255];
