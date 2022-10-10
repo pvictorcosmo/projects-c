@@ -11,8 +11,6 @@ void insert_clients(char rg[],char cpf[],char nome[],char ends[],char datanascs[
     }
   }
 
-  printf("index=%i",index);
-
   nomes[index]=malloc(sizeof(char)*255);
   rgs[index]=malloc(sizeof(char)*12);
   end[index]=malloc(sizeof(char)*255);
@@ -28,9 +26,6 @@ void insert_clients(char rg[],char cpf[],char nome[],char ends[],char datanascs[
   strcpy(datanasc[index], datanascs);
   strcpy(fones[index], fone);                 
   strcpy(cpfs[index],cpf);
-  printf("nome=%s", nomes[0]);
-  printf("index=%i",index);
-  printf("aux=%i", aux);
  if(strlen(cpf)==0 || strlen(nome)==0 || strlen(datanascs)==0){
     aux=1;
       //Esse bloco testa e diz se as informações estiverem erradas
@@ -52,30 +47,25 @@ void insert_clients(char rg[],char cpf[],char nome[],char ends[],char datanascs[
 
 void list_clients_ui(){ 
   for(i=0;i<tam;i++){  
-    if(livres[i] == 0){
-      printf("[0]=%i [1]=%i", livres[0],livres[1]);
-        system("cls");
-        
+    if(livres[i] == 0 ){       
         printf("\nSeu cadastro foi feito com sucesso!\n");
         printf("Deseja fazer outro cadastro?(s/n):");
         scanf("%s", &resp);
+        break;
           //Fazendo cadastro da pessoa e printando as informações na tela
-          /*Perceber que essa informação só vai ser verdadeira se o numero de caracteres de cpf, nome e data de nascimento forem maior que 0*/
       }
     }
   }
 void clients_ui(){
-  printf("aux=%i",aux);
-  printf("iivres=%i",livres[0]);
   printf("CADASTROS ##################\n\n");
   for(i=0;i<tam;i++){
     if(livres[i]==0){
-      printf("######### DADOS DO CLIENTE ##########");
+      printf("######## DADOS DO CLIENTE #########");
       printf("\nCodigo: [%i]\nRG:%s\nCPF:%s\nNome:%s\nEndereco:%s\nData de nascimento:%s\nRendimenNo:%s\nTelefone:%s\n",cod[i], rgs[i],cpfs[i], nomes[i], end[i],datanasc[i],rend[i],fones[i]);
       
       for(j=0;j<pets;j++){
         if(livres_pet[i][j]==0){  
-          printf("######### DADOS DO SEU PET ##########");
+          printf("######## DADOS DO SEU PET #########");
           printf("\nCodigo: %i\nNome: %s\nTipo: %s\nData de nascimento:%s\n",codpet[i][j],nome_pet[i][j],type_pet[i][j],datanascpet[i][j]);
           space();
         }
@@ -204,14 +194,23 @@ void alt_user_ui(){
 }
 void list_client(int codtest){
   for(i=0;i<tam;i++){
-    if(livres[i]==0){
-      if(cod[i]==codtest){
-        printf("Estes sao dos dados do cliente [%i]:\n ", cod[i]);
-        printf("######### DADOS DO CLIENTE ##########");
-        printf("\nCodigo: [%i]\nRG:%s\nCPF:%s\nNome:%s\nEndereco:%s\n Data de nascimento:%s\nRendimenNo:%s\nTelefone:%s\n",cod[i], rgs[i],cpfs[i], nomes[i], end[i],datanasc[i],rend[i],fones[i]);
-        space();
+    for(j=0;j<pets;j++){
+      if(cod[i]==codtest || codpet[i][j]==codtest){
+        if(livres[i]==0){
+          printf("######### DADOS DO CLIENTE ##########");
+          printf("\nCodigo: [%i]\nRG:%s\nCPF:%s\nNome:%s\nEndereco:%s\nData de nascimento:%s\nRendimenNo:%s\nTelefone:%s\n",cod[i], rgs[i],cpfs[i], nomes[i], end[i],datanasc[i],rend[i],fones[i]);
+      
+          for(g=0;g<pets;g++){
+            if(livres_pet[i][g]==0){  
+              printf("######### DADOS DO SEU PET ##########");
+              printf("\nCodigo: %i\nNome: %s\nTipo: %s\nData de nascimento:%s\n",codpet[i][g],nome_pet[i][g],type_pet[i][g],datanascpet[i][g]);
+              space();
+            }
+          }
+        }
       }
     }
+
   }
 }
 
@@ -221,9 +220,10 @@ void funcs_clients_ui(){
     char datanascpets[8];
     int i;
     char type_test[25];
-    printf("Funcionalidades do usuario:\n1 - para excluir um usuario\n2 - para alterar um usuario\n3 - para buscar um cadastro pelo codigo\n4 - Para mostrar cadastros que tenham um tipo especifico de pet\n5 - para listar os cadastros em ordem alfabetica\n");
-    space();
-    printf("Funcionalidades do pet:\n6 - para excluir um pet\n7 - para alterar um pet\n8 - para adicionar um novo pet\n9 - para mostrar cadastros com base no codigo do pet\n10 - para mostrar os pets em ordem alfabetica\n");
+    printf("######## FUNCIONALIDADES DO USUARIO #########");
+    printf("\n1 - para excluir um usuario\n2 - para alterar um usuario\n3 - para buscar um cadastro pelo codigo\n4 - Para mostrar cadastros que tenham um tipo especifico de pet\n5 - para listar os cadastros em ordem alfabetica\n");
+    printf("######## FUNCIONALIDADES DO PET #########");
+    printf("\n6 - para excluir um pet\n7 - para alterar um pet\n8 - para adicionar um novo pet\n9 - para mostrar cadastros com base no codigo do pet\n10 - para mostrar os pets em ordem alfabetica\n");
     scanf("%i",&resp3);
 
     switch(resp3){
@@ -279,7 +279,26 @@ void funcs_clients_ui(){
             }
           }
         }
+      break;
+
+      case 8:
+        printf("Digite o codigo do usuario que deseja adicionar um novo pet:");    
+        scanf("%i", &codtest);
+        for(i=0;i<tam;i++){
+          if(codtest==cod[i]){
+            I=i;
+            insert_new_pets_ui();
+          }
+        }
+      break;
+
+      case 9:
+        printf("Digite o codigo do pet que deseja mostrar o cadastro:");    
+        scanf("%i", &codtest);
+        list_client(codtest);
       break;  
+        
+          
         
           
 
@@ -291,27 +310,7 @@ void funcs_clients_ui(){
     if(resp3==5){
       order_alf_user();
     }
-    if(resp3==6){
-    printf("Digite o codigo do usuario ou do pet que deseja excluir:");    
-    scanf("%i", &codtest);
-    
-        }
-      }      
-    }  
-  }
-  if(resp3==7){
-    printf("Digite o codigo do pet que deseja alterar:");    
-    scanf("%i", &codtest);
- 
-  if(resp3==8){
-    printf("Digite o codigo do usuario que deseja adicionar um novo pet:");    
-    scanf("%i", &codtest);
-    for(i=0;i<tam;i++){
-      if(cod[i]==codtest){
-        alt_insert_pets();
-      }    
-    }
-  }
+
   if(resp3==9){
     printf("Digite o codigo do pet que deseja mostrar o cadastro:");    
     scanf("%i", &codtest);

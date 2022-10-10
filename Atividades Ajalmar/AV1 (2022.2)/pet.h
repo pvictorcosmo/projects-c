@@ -13,12 +13,16 @@ void insert_pets(char nome_pets[],char type_pets[],char datanascpets[]);
 
 void insert_pets_ui();
 
-void delete_pet(int codtest);
+void insert_new_pets(char nome_pets[],char type_pets[],char datanascpets[]);
 
-void test_type(char type_test[]);
+void insert_new_pets_ui();
+
+void alt_pets(char nome_pets[],char type_pets[],char datanascpets[]);
 
 void alt_pets_ui();
 
-void alt_pets(char nome_pets[],char type_pets[],char datanascpets[]);
+void delete_pet(int codtest);
+
+void test_type(char type_test[]);
 
 void order_alf_pets();
