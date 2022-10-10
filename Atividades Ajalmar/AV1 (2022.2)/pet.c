@@ -18,22 +18,31 @@ void insert_pets(char nome_pets[],char type_pets[],char datanascpets[]){
 
   static int indextam = -1;
   static int indexpet = -1;
-  for (i= 0; i < tam; i++){
-    if(livres_pet[i][0]==1){
-      indextam = i;
-      break;
+  for ( i= 0; i < tam; i++ ){
+    for ( j = 0 ;j < pets; j++ ){  
+      if(livres_pet[i][j]==1){
+        indextam=i;
+        indexpet=j;
+        break;
+      }
     }
   }
+  
+  strcpy(datanascpet[indextam][indexpet], datanascpets);
+  strcpy(type_pet[indextam][indexpet], type_pets);
+  strcpy(nome_pet[indextam][indexpet], nome_pets);
 
-  strcpy(datanascpet[indextam][0], datanascpets);
-  strcpy(type_pet[indextam][0], type_pets);
-  strcpy(nome_pet[indextam][0], nome_pets);
-  livres_pet[i][0]=0;
+  livres_pet[indextam][indexpet]=0;
+  
   printf("[0pet]=%i [1pet]=%i [0][1]=%i", livres_pet[0][0],livres_pet[1][0],livres_pet[0][1]);
-
+  
+  free(type_pets);
+  free(datanascpets);
+  free(nome_pets);
 }
 
 void insert_pets_ui(){
+  printf("pet=%d",livres_pet[0][0]);
 
   char *type_pets=malloc(sizeof(char)*20);
   char *nome_pets=malloc(sizeof(char)*255);
@@ -89,31 +98,45 @@ void test_type(char type_test[]){
     }
   }
 }
-/*
-void alt_insert_pets(){
 
+void alt_pets(char nome_pets[],char type_pets[],char datanascpets[]){
 
-  static int indextam = -1;
-  static int indexpet = -1;
-  for (i= 0; i < tam; i++){
-    for(j=0;j<pets;j++){
-      if(livres_pet[i][j]==1){
-      indextam = i;
-      indexpet=j;
-      break;
-      }
-    }
-    break;
-  }
+  datanascpet[I][J]=malloc(sizeof(char)*9);
+  type_pet[I][J]=malloc(sizeof(char)*25);
+  nome_pet[I][J]=malloc(sizeof(char)*255);
 
-  strcpy(datanascpet[indextam][indexpet], datanascpets);
-  strcpy(type_pet[indextam][indexpet], type_pets);
-  strcpy(nome_pet[indextam][indexpet], nome_pets);
-  livres_pet[i][j]=0;
+  strcpy(datanascpet[I][J], datanascpets);
+  strcpy(type_pet[I][J], type_pets);
+  strcpy(nome_pet[I][J], nome_pets);
+  livres_pet[I][J]=0;
   printf("[0pet]=%i [1pet]=%i [0][1]=%i", livres_pet[0][0],livres_pet[1][0],livres_pet[0][1]);
 
 }
 
+void alt_pets_ui(){
+
+  char *type_pets=malloc(sizeof(char)*20);
+  char *nome_pets=malloc(sizeof(char)*255);
+  char *datanascpets=malloc(sizeof(char)*9);
+
+  printf("Ok, agora vamos perguntar sobre o seu pet:\n");
+  printf("Qual o nome do seu pet?:");
+  fflush(stdin);
+  fgets(nome_pets,255,stdin);
+  printf("Qual o tipo do seu pet?:");
+  fflush(stdin);
+  fgets(type_pets,25,stdin);
+  printf("Qual a data de nascimento do seu pet?:");
+  fflush(stdin);
+  fgets(datanascpets,8,stdin);
+    //fgets é pra pegar as strings com espaço, o fflush serve pra tirar todo o lixo da string
+  datanascpets[strcspn(datanascpets,"\n")]=0;
+  nome_pets[strcspn(nome_pets,"\n")]=0;
+  type_pets[strcspn(type_pets,"\n")]=0;
+    //Esses comandos são para o comando fgets ignorar o \n, pois ele normalmente adiciona um \n na string, mas a gente quer que elas não tenham tanto espaço
+  alt_pets(nome_pets,type_pets,datanascpets);
+}
+/*
 void order_alf_pets(){
 
   for (i = 1; i < tam; i++) { /* 3 = qtde de palavras 

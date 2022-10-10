@@ -265,7 +265,23 @@ void funcs_clients_ui(){
         printf("Digite o codigo do usuario ou do pet que deseja excluir:");    
         scanf("%i", &codtest);
         delete_pet(codtest);
+      break;
+
+      case 7:
+        printf("Digite o codigo do pet que deseja alterar:");    
+        scanf("%i", &codtest);
+        for(i=0;i<tam;i++){
+          for(j=0;j<pets;j++){
+            if(codtest==codpet[i][j]){
+              I=i;
+              J=j;
+              alt_pets_ui();
+            }
+          }
+        }
       break;  
+        
+          
 
     }
       printf("\nDeseja mostrar todos os cadastros?:");
@@ -286,17 +302,7 @@ void funcs_clients_ui(){
   if(resp3==7){
     printf("Digite o codigo do pet que deseja alterar:");    
     scanf("%i", &codtest);
-    for(i=0;i<tam;i++){
-      for(j=0;j<pets;j++){
-        if(livres_pet[i][j]==0){
-          if(codpet[i][j]==codtest){
-            livres_pet[i][j]=1;
-            alt_insert_pets();
-          }
-        }
-      }   
-    }
-  }
+ 
   if(resp3==8){
     printf("Digite o codigo do usuario que deseja adicionar um novo pet:");    
     scanf("%i", &codtest);
