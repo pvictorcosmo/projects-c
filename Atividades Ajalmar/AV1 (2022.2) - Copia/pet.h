@@ -1,6 +1,6 @@
 #define tam 30
 #define pets 5
-int *livres_pet[tam];
+int livres_pet[tam][pets];
 int codpet[tam][pets];
 char *type_pet[tam][pets];
 char *nome_pet[tam][pets];
