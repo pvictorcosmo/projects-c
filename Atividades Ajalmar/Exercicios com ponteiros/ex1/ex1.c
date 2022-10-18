@@ -1,29 +1,20 @@
 #include<stdio.h>
 #include<stdlib.h>
 #define tam 5
-int i;
-void somar(int *pnum,int *soma){   
-  *soma=0;
-  for(i=0;i<tam;i++){
-    *pnum=i;
-    *soma=*soma+*pnum;
-  }
-
-
-}
 
 int main(){
-  int *pnum;
-  int *soma;
-  pnum=malloc(sizeof(char)*tam);
-  soma=malloc(sizeof(char));
+  int i,*pnum,*soma,*aux;
+  pnum=malloc(sizeof(int)*tam);
+  soma=malloc(sizeof(int));
+  aux=malloc(sizeof(int));
+  *soma=0;
 
   for(i=0;i<tam;i++){
     printf("Digite um numero:");
-    scanf("%d", pnum);
+    scanf("%d", aux);
+    pnum[i]=*aux;
+    *soma=*soma+*pnum;
   }
-  
-  somar(pnum,soma);
 
   printf("Soma eh igual a:%d",*soma);
   free(pnum);

@@ -3,11 +3,13 @@
 int livres_pet[tam][pets];
 int codpet[tam][pets];
 char *type_pet[tam][pets];
-char *nome_pet[tam][pets];
+char nome_pet[tam][pets][255];
 char *datanascpet[tam][pets];
 char aux_pet[255];
 
 void list_pets();
+
+void list_pets_index(int index);
 
 void insert_pets(char nome_pets[],char type_pets[],char datanascpets[]);
 
@@ -26,3 +28,4 @@ void delete_pet(int codtest);
 void test_type(char type_test[]);
 
 void order_alf_pets();
+

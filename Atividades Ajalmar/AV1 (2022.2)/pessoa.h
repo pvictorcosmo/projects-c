@@ -1,14 +1,15 @@
 #define tam 30
+#define pets 5
 char *cpfs[tam];
-int livres[tam];
+int livres[tam][pets];
 int  cod[tam];
-char  *datanasc[tam];
-char *cpftest[tam];
-char  *rend[tam];
-char *nomes[tam];
-char *end[tam];
-char *fones[tam];
-char *rgs[tam];
+char  *datanasc[tam][pets];
+char *cpftest[tam][pets];
+char  *rend[tam][pets];
+char *nomes[tam][pets];
+char *end[tam][pets];
+char *fones[tam][pets];
+char *rgs[tam][pets];
 char aux_user[255];
 int codtest;
 

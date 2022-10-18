@@ -75,9 +75,9 @@ void clients_ui(){
   }
 }
 
-/*void order_alf_user(){
+void order_alf_user(){
 
-for (i = 1; i < tam; i++) { /* 3 = qtde de palavras 
+for (i = 1; i < tam; i++) { // 3 = qtde de palavras 
    for (j = 1; j < tam; j++) {
       // verifica se tem que ser depois, se for troca de posição
       if (strcmp(nomes[j - 1], nomes[j]) > 0) {
@@ -93,7 +93,7 @@ for(i=0;i<tam;i++){
   list_pets();
 
 }
-}*/
+}
 int delete_user(int codtest){
 
   for(i=0;i<tam;i++){
