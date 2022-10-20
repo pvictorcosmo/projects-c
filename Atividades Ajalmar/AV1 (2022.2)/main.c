@@ -23,7 +23,7 @@ if(init=='n'){
   do{
     clients_ui();
     funcs_clients_ui();
-  }while(resp=='s');
+  }while(resp!='n' || resp!='s');
   
   /*O código vai funcionar enquanto a resposta for s, a nao ser que a pessoa ja tenha um cadastro, se a resposta for n, o código vai mostrar todos listados*/
   

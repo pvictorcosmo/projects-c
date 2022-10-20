@@ -11,8 +11,6 @@ void insert_clients(char rg[],char cpf[],char nome[],char ends[],char datanascs[
     }
   }
 
-
-  nomes[index]=malloc(sizeof(char)*255);
   rgs[index]=malloc(sizeof(char)*12);
   end[index]=malloc(sizeof(char)*255);
   rend[index]=malloc(sizeof(char)*20);
@@ -27,19 +25,18 @@ void insert_clients(char rg[],char cpf[],char nome[],char ends[],char datanascs[
   strcpy(datanasc[index], datanascs);
   strcpy(fones[index], fone);                 
   strcpy(cpfs[index],cpf);
- if(strlen(cpf)==0 || strlen(nome)==0 || strlen(datanascs)==0){
-    aux=1;
-      //Esse bloco testa e diz se as informações estiverem erradas
-  }
-  //Perguntando as informações do usuário
-
   livres[index] = 0;
-  printf("livres=%i",livres[0]);
+ if(strlen(cpf)!=11 || strlen(nome)==0 || strlen(datanascs)!=8){
+    printf("Informacoes erradas!\nPor Favor digite novamente:\n");
+    livres[index] = 1;
+    insert_user_ui();
+      //Esse bloco testa e diz se as informações estiverem erradas
+ }
+  //Perguntando as informações do usuário
 
   free(datanascs);
   free(rg);
   free(cpf);
-  free(nome);
   free(ends);
   free(fone);
   free(rends);
@@ -48,7 +45,8 @@ void insert_clients(char rg[],char cpf[],char nome[],char ends[],char datanascs[
 
 void list_clients_ui(){ 
   for(i=0;i<tam;i++){  
-    if(livres[i] == 0 ){       
+    if(livres[i] == 0 ){    
+        system("cls");  
         printf("\nSeu cadastro foi feito com sucesso!\n");
         printf("Deseja fazer outro cadastro?(s/n):");
         scanf("%s", &resp);
@@ -58,40 +56,41 @@ void list_clients_ui(){
     }
   }
 void clients_ui(){
-  printf("CADASTROS ##################\n\n");
+  printf("--------- CADASTROS ---------\n");
   for(i=0;i<tam;i++){
     if(livres[i]==0){
-      printf("######## DADOS DO CLIENTE #########");
-      printf("\nCodigo: [%i]\nRG:%s\nCPF:%s\nNome:%s\nEndereco:%s\nData de nascimento:%s\nRendimenNo:%s\nTelefone:%s\n",cod[i], rgs[i],cpfs[i], nomes[i], end[i],datanasc[i],rend[i],fones[i]);
+      format(cpfs[i],"###.###.###-##",cpf_format);
+      format(rgs[i],"#########-##",rg_format);
+      format(datanasc[i],"##/##/####",datanasc_format);
+
+      printf("------- DADOS DO CLIENTE -------");
+      printf("\nCodigo: [%i]\nRG: [%s]\nCPF:[%s]\nNome: [%s]\nEndereco: [%s]\nData de nascimento: [%s]\nRendimennto: [R$ %s]\nTelefone: [%s]\n",cod[i], rg_format,cpf_format, nomes[i], end[i],datanasc_format,rend[i],fones[i]);
       
       for(j=0;j<pets;j++){
-        if(livres_pet[i][j]==0){  
-          printf("######## DADOS DO SEU PET #########");
-          printf("\nCodigo: %i\nNome: %s\nTipo: %s\nData de nascimento:%s\n",codpet[i][j],nome_pet[i][j],type_pet[i][j],datanascpet[i][j]);
-          space();
+        if(livres_pet[i][j]==0){
+          format(datanascpet[i][j],"##/##/####",datanascpet_format);
+          printf("------- DADOS DO SEU PET -------");
+          printf("\nCodigo: [%i]\nNome: [%s]\nTipo: [%s]\nData de nascimento:[%s]\n",codpet[i][j],nome_pet[i][j],type_pet[i][j],datanascpet_format);
         }
       }
     }
   }
 }
+void list_user(int index){
 
-void order_alf_user(){
-
-for (i = 1; i < tam; i++) { // 3 = qtde de palavras 
-   for (j = 1; j < tam; j++) {
-      // verifica se tem que ser depois, se for troca de posição
-      if (strcmp(nomes[j - 1], nomes[j]) > 0) {
-         strcpy(aux_user, nomes[j - 1]);
-         strcpy(nomes[j - 1], nomes[j]);
-         strcpy(nomes[j], aux_user);
-      }
-   }
-}
-for(i=0;i<tam;i++){
-  printf("  DADOS DO CLIENTE:\ncodigo: %i\nRG:%s\nCPF:%s\nnome:%s\nendereco:%s\nSua data de nascimento:%s\nrendimento:%s\ntelefone:%s\n",cod[i], rgs[i],cpfs[i], nomes[i], end[i],datanasc[i],rend[i],fones[i]);
-  space();
-  list_pets();
-
+  if(livres[index]==0){
+    format(cpfs[index],"###.###.###-##",cpf_format);
+    format(rgs[index],"#########-##",rg_format);
+    format(datanasc[index],"##/##/####",datanasc_format);
+    printf("------- DADOS DO CLIENTE -------");
+    printf("\nCodigo: [%i]\nRG: [%s]\nCPF:[%s]\nNome: [%s]\nEndereco: [%s]\nData de nascimento: [%s]\nRendimennto: [R$ %s]\nTelefone: [%s]\n",cod[index], rg_format,cpf_format, nomes[index], end[index],datanasc_format,rend[index],fones[index]);
+    for(i=0;i<pets;i++){
+    if(livres_pet[index][i]==0){
+      format(datanascpet[i][j],"##/##/####",datanascpet_format);
+      printf("------- DADOS DO SEU PET -------");
+      printf("\nCodigo: [%i]\nNome: [%s]\nTipo: [%s]\nData de nascimento:[%s]\n\n",codpet[index][i],nome_pet[index][i],type_pet[index][i],datanascpet_format);
+    }
+    }
 }
 }
 int delete_user(int codtest){
@@ -108,9 +107,49 @@ int delete_user(int codtest){
 
 }
 
+void order_alf_user(){
+    int index = 0;
+    int all_index[tam];
+    char *nome[tam];
+    for(int i = 0; i < tam; ++i) {
+        if(nomes[i]) {
+            nome[index] = Str(nomes[i]);
+            strcpy(nome[index], nomes[i]);
+            all_index[index] = i;
+            index++;
+        }
+    }
+    int total = index;
+    for(int i = 0; i < total; ++i){
+      Upper(nome[i]);
+    }
+    
+
+    char size[255];
+
+    while(index--){
+        strcpy(size, "z");
+        int size_in = 0;
+
+        for(int i = 0; i < total; ++i) {
+            if(strcmp(nome[i], size) < 0) {
+                strcpy(size, nome[i]);
+                size_in = i;
+            }
+        }
+
+        strcpy(nome[size_in], "z");
+        list_user(all_index[size_in]);
+    
+    }
+    for(int i = 0; i < total; ++i){
+        free(nome[i]);
+    }
+}
+
+
 void alt_user(char rg[],char cpf[],char nome[],char ends[],char datanascs[],char fone[],char rends[]){
 
-  nomes[I]=malloc(sizeof(char)*255);
   rgs[I]=malloc(sizeof(char)*12);
   end[I]=malloc(sizeof(char)*255);
   rend[I]=malloc(sizeof(char)*20);
@@ -127,14 +166,16 @@ void alt_user(char rg[],char cpf[],char nome[],char ends[],char datanascs[],char
   strcpy(cpfs[I],cpf);
   printf("nome=%s", nomes[0]);
   printf("aux=%i", aux);
- if(strlen(cpf)==0 || strlen(nome)==0 || strlen(datanascs)==0){
-    aux=1;
+    livres[I] = 0;
+ if(strlen(cpf)!=11 || strlen(nome)==0 || strlen(datanascs)!=8){
+   printf("Informacoes erradas!\nPor Favor digite novamente:\n");
+   livres[I]=1;
+   alt_user_ui();
       //Esse bloco testa e diz se as informações estiverem erradas
   }
   //Perguntando as informações do usuário
 
-  livres[I] = 0;
-  printf("livres=%i",livres[0]);
+
 
   free(datanascs);
   free(rg);
@@ -193,157 +234,30 @@ void alt_user_ui(){
   J=0;
 
 }
+
 void list_client(int codtest){
+
   for(i=0;i<tam;i++){
     for(j=0;j<pets;j++){
-      if(cod[i]==codtest || codpet[i][j]==codtest){
+      if(cod[i]==codtest){
         if(livres[i]==0){
-          printf("######### DADOS DO CLIENTE ##########");
-          printf("\nCodigo: [%i]\nRG:%s\nCPF:%s\nNome:%s\nEndereco:%s\nData de nascimento:%s\nRendimenNo:%s\nTelefone:%s\n",cod[i], rgs[i],cpfs[i], nomes[i], end[i],datanasc[i],rend[i],fones[i]);
-      
-          for(g=0;g<pets;g++){
-            if(livres_pet[i][g]==0){  
-              printf("######### DADOS DO SEU PET ##########");
-              printf("\nCodigo: %i\nNome: %s\nTipo: %s\nData de nascimento:%s\n",codpet[i][g],nome_pet[i][g],type_pet[i][g],datanascpet[i][g]);
-              space();
-            }
-          }
-        }
-      }
-    }
-
-  }
-}
-
-void funcs_clients_ui(){
-    char type_pets[25];
-    char nome_pets[255];
-    char datanascpets[8];
-    int i;
-    char type_test[25];
-    printf("######## FUNCIONALIDADES DO USUARIO #########");
-    printf("\n1 - para excluir um usuario\n2 - para alterar um usuario\n3 - para buscar um cadastro pelo codigo\n4 - Para mostrar cadastros que tenham um tipo especifico de pet\n5 - para listar os cadastros em ordem alfabetica\n");
-    printf("######## FUNCIONALIDADES DO PET #########");
-    printf("\n6 - para excluir um pet\n7 - para alterar um pet\n8 - para adicionar um novo pet\n9 - para mostrar cadastros com base no codigo do pet\n10 - para mostrar os pets em ordem alfabetica\n");
-    scanf("%i",&resp3);
-
-    switch(resp3){
-      case 1:
-        printf("Digite o codigo do usuario que deseja excluir:");    
-        scanf("%i", &codtest);
-        if(delete_user(codtest)==1){
-          printf("Usuário excluido com sucesso");
-        }
-      break;
-
-      case 2:
-        printf("Digite o codigo do usuario que deseja alterar:");    
-        scanf("%i", &codtest);
-        for(i=0;i<tam;i++){
-          if(livres[i]==0){
-            if(cod[i]==codtest){
-              livres[i]=1;
-              I=i;
-              alt_user_ui();
-            }
-          }          
-        }
-      break;
-
-      case 3:
-        printf("Digite o codigo do usuario acessar:");    
-        scanf("%i", &codtest);
-        list_client(codtest);
-      break;
-
-      case 4:
-        printf("Digite o tipo pet para acessar:");    
-        scanf("%s", &type_test);
-        test_type(type_test);
-      break;  
-
-      case 6:
-        printf("Digite o codigo do usuario ou do pet que deseja excluir:");    
-        scanf("%i", &codtest);
-        delete_pet(codtest);
-      break;
-
-      case 7:
-        printf("Digite o codigo do pet que deseja alterar:");    
-        scanf("%i", &codtest);
-        for(i=0;i<tam;i++){
-          for(j=0;j<pets;j++){
-            if(codtest==codpet[i][j]){
-              I=i;
-              J=j;
-              alt_pets_ui();
-            }
-          }
-        }
-      break;
-
-      case 8:
-        printf("Digite o codigo do usuario que deseja adicionar um novo pet:");    
-        scanf("%i", &codtest);
-        for(i=0;i<tam;i++){
-          if(codtest==cod[i]){
-            I=i;
-            insert_new_pets_ui();
-          }
-        }
-      break;
-
-      case 9:
-        printf("Digite o codigo do pet que deseja mostrar o cadastro:");    
-        scanf("%i", &codtest);
-        list_client(codtest);
-      break;  
-        
-          
-        
-          
-
-    }
-      printf("\nDeseja mostrar todos os cadastros?:");
- 
-    scanf("%s", &resp);
-    /*
-    if(resp3==5){
-      order_alf_user();
-    }
-
-  if(resp3==9){
-    printf("Digite o codigo do pet que deseja mostrar o cadastro:");    
-    scanf("%i", &codtest);
-    for(i=0;i<tam;i++){
-      for(j=0;j<pets;j++){
-        if(codtest==codpet[i][j]){
-          printf("Estes sao dos dados do pet [%i]:\n ", codpet[i][j]);
-          printf("  DADOS DO CLIENTE:\ncodigo: %i\nRG:%s\nCPF:%s\nnome:%s\nendereco:%s\nSua data de nascimento:%s\nrendimento:%s\ntelefone:%s\n",cod[i], rgs[i],cpfs[i], nomes[i], end[i],datanasc[i],rend[i],fones[i]);
-          printf("   DADOS DO SEU PET:\nCodigo: %i\nNome: %s\nTipo: %s\nData de nascimento:%s\n",codpet[i][j],nome_pet[i][j],type_pet[i][j],datanascpet[i][j]);
+          format(cpfs[i],"###.###.###-##",cpf_format);
+          format(rgs[i],"#########-##",rg_format);
+          format(datanasc[i],"##/##/####",datanasc_format);
+          printf("------- DADOS DO CLIENTE -------");
+          printf("\nCodigo: [%i]\nRG: [%s]\nCPF:[%s]\nNome: [%s]\nEndereco: [%s]\nData de nascimento: [%s]\nRendimennto: [R$ %s]\nTelefone: [%s]\n",cod[i], rg_format,cpf_format, nomes[i], end[i],datanasc_format,rend[i],fones[i]);
           break;
         }
       }
     }
   }
-  if(resp3==10){
-    
-    if(livres_pet==0){
-    order_alf_pets();
-    }
-
-  }*/
-
-
-    
 }
-
 
 void insert_user_ui(){
   aux=0;
   char *rg=malloc(sizeof(char)*12);
   char *cpf=malloc(sizeof(char)*12);
-  char *nome=malloc(sizeof(char)*255);
+  char nome[255];
   char *ends=malloc(sizeof(char)*255);
   char *datanascs=malloc(sizeof(char)*9);
   char *fone=malloc(sizeof(char)*20);
@@ -383,6 +297,7 @@ void insert_user_ui(){
 
   J=0;
 }
+
 
 
 
