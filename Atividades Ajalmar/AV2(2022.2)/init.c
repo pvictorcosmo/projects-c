@@ -79,6 +79,13 @@ void interfaceUser(){
         break;
 
         case(search_by_code):
+            printf("\n#---------------------------------------------------#");
+            printf("\n|            DIGITE O CODIGO DO USUARIO             |");
+            printf("\n#---------------------------------------------------#");
+            printf("\n > ");
+            scanf("%d",&codUser);
+            deletePerson("persons.bin",codUser);
+
         break;
 
         case(search_by_pet):

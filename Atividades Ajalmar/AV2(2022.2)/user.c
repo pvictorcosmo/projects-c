@@ -84,6 +84,7 @@ void insertPerson(char *file_path,char *Rg,char *Cpf,char *Name,char *Address,ch
     strcpy(current->dateUser,Date);
     strcpy(current->phoneUser,Phone);
     strcpy(current->incomeUser,Income);
+    current->fileExist=1;
     current->codUser=nextCode();
   // printf("%d",current->codUser);
 
@@ -130,15 +131,15 @@ void insertPerson(char *file_path,char *Rg,char *Cpf,char *Name,char *Address,ch
 
      fseek(chvUser,0,SEEK_SET);
      fread(&codUser,sizeof(int),1,chvUser);
-     printf("%d",codUser);
      for(int i=0;i<codUser;i++)
      {
 
          fseek(archive, sizeof(person) * i, SEEK_SET);
          fread(&listPerson, sizeof(person), 1, archive);
-         if(listPerson.nameUser!=NULL) {
+         printf("%d",listPerson.fileExist);
+         if(listPerson.fileExist) {
              printf("\n#-----------------------------------------#");
-             printf("\n| > Codigo: %.3d                           |", listPerson.codUser);
+             printf("\n| > Codigo: %.3d                          |", listPerson.codUser);
              printf("\n#-----------------------------------------#");
              printf("\n > Nome: %s", listPerson.nameUser);
              printf(" > Cpf: %s", listPerson.cpfUser);
@@ -224,6 +225,7 @@ void changePerson(char *file_path,char *Rg,char *Cpf,char *Name,char *Address,ch
     strcpy(current->dateUser,Date);
     strcpy(current->phoneUser,Phone);
     strcpy(current->incomeUser,Income);
+    current->fileExist=1;
     current->codUser=codUser+1;
 
     free(Rg);
@@ -246,9 +248,37 @@ void deletePerson(char *file_path,int codUser){
     archive=fopen(file_path,"rb+");
     if(archive==NULL)
         archive=fopen(file_path,"wb+");
-    person *current=NULL;
+    person *current;
     current=(person *)malloc(sizeof(person));
-    strcpy(current->fileExist,NULL);
+    current->fileExist=0;
+
     fseek(archive,sizeof (person)*codUser,SEEK_SET);
     fwrite(current,sizeof(person),1,archive);
+}
+
+void searchByCode(char *fie_path,int codUser){
+    codUser--;
+    FILE *archive=NULL;
+    archive=fopen(file_path,"rb+");
+    if(archive==NULL)
+        archive=fopen(file_path,"wb+");
+    person listPerson;
+
+    fseek(archive, sizeof(person) * i, SEEK_SET);
+    fread(&listPerson, sizeof(person), 1, archive);
+
+    if(listPerson.fileExist) {
+            printf("\n#-----------------------------------------#");
+            printf("\n| > Codigo: %.3d                          |", listPerson.codUser);
+            printf("\n#-----------------------------------------#");
+            printf("\n > Nome: %s", listPerson.nameUser);
+            printf(" > Cpf: %s", listPerson.cpfUser);
+            printf(" > Endereco: %s", listPerson.addressUser);
+            printf(" > Data de nascimento: %s", listPerson.dateUser);
+            printf(" > Telefone: %s", listPerson.phoneUser);
+            printf(" > Rendimento mensal: %s", listPerson.incomeUser);
+            printf("\n#-----------------------------------------#");
+        }
+
+    }
 }

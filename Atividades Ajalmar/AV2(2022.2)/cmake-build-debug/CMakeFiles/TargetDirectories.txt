@@ -1,3 +1,0 @@
-C:/Users/Rosemary/Desktop/AV2(2022.2)/cmake-build-debug/CMakeFiles/AV2_2022_2_.dir
-C:/Users/Rosemary/Desktop/AV2(2022.2)/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/Rosemary/Desktop/AV2(2022.2)/cmake-build-debug/CMakeFiles/rebuild_cache.dir

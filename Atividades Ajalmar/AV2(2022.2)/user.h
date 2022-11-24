@@ -11,15 +11,21 @@ typedef struct User{
   char addressUser[sizeMaxNames];
   char phoneUser[20];
   char incomeUser[20];
-  struct User *fileExist;
+  int fileExist;
 }person;
 
 int nextCode();
 void insertPerson(char *file_path,char *Rg,char *Cpf,char *Name,char *Address,char *Date,char *Phone,char *Income );
+
 void insertPersonUI();
+
 void listPersons(person listPerson,char *file_path);
+
 void changePersonUI();
+
 void changePerson(char *file_path,char *Rg,char *Cpf,char *Name,char *Address,char *Date,char *Phone,char *Income,int codUser );
+
 void deletePerson(char *file_path,int codUser);
 
+void searchByCode(char *fie_path,int codUser);
 
