@@ -27,5 +27,7 @@ void changePerson(char *file_path,char *Rg,char *Cpf,char *Name,char *Address,ch
 
 void deletePerson(char *file_path,int codUser);
 
-void searchByCode(char *fie_path,int codUser);
+void searchByCode(char *file_path,int codUser);
+
+void searchByCodePet(char *file_path, int codPet);
 
