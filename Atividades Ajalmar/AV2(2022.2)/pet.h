@@ -14,7 +14,7 @@ int nextCodePet();
 
 void insertPetsUI();
 
-void insertPets(char *file_path,char *Name,char *Date,char *Type);
+void insertPets(char *file_path,char *Name,char *Date,char *Type,int codUser);
 
 void listPets(char *file_path);
 
@@ -23,3 +23,5 @@ void changePetsUI();
 void changePets(char *file_path,char *Name,char *Date,char *Type,int codPet);
 
 void searchByPetCode(char *file_path,int codPet);
+
+void searchByUserCode(char *file_path,int codUser);

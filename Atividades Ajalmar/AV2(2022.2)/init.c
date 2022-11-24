@@ -147,7 +147,7 @@ void interfaceUser(){
 }
 
 void interfacePets(){
-    int option;
+    int option,codUser;
     enum options{add_pets=1,change_pets,delete_pets,list_pets,search_by_code,search_by_codeUser,alphabetical_order,main_menu};
     system("cls");
     printf("\n#--------------------MENU DE PETS------------------#");
@@ -175,10 +175,26 @@ void interfacePets(){
     switch(option){
         case (add_pets):
             insertPetsUI();
+
+            printf("\n#---------------------------------------------#");
+            printf("\n|  8 - Para voltar ao Menu de usuarios        |");
+            printf("\n#---------------------------------------------#");
+            printf("\n > ");
+            scanf("%d",&option);
+            if(option==8)
+                interfacePets();
         break;
 
         case(change_pets):
             changePetsUI();
+
+            printf("\n#---------------------------------------------#");
+            printf("\n|  8 - Para voltar ao Menu de usuarios        |");
+            printf("\n#---------------------------------------------#");
+            printf("\n > ");
+            scanf("%d",&option);
+            if(option==8)
+                interfacePets();
         break;
 
         case(delete_pets):
@@ -186,6 +202,14 @@ void interfacePets(){
 
         case (list_pets):
             listPets("pets.bin");
+
+            printf("\n#---------------------------------------------#");
+            printf("\n|  8 - Para voltar ao Menu de usuarios        |");
+            printf("\n#---------------------------------------------#");
+            printf("\n > ");
+            scanf("%d",&option);
+            if(option==8)
+                interfacePets();
         break;
 
         case(search_by_code):
@@ -202,10 +226,24 @@ void interfacePets(){
             printf("\n > ");
             scanf("%d",&option);
             if(option==8)
-                interfaceUser();
+                interfacePets();
         break;
 
         case(search_by_codeUser):
+            printf("\n#---------------------------------------------------#");
+            printf("\n|            DIGITE O CODIGO DO USUARIO             |");
+            printf("\n#---------------------------------------------------#");
+            printf("\n > ");
+            scanf("%d",&codUser);
+            searchByUserCode("pets.bin",codUser);
+
+            printf("\n#---------------------------------------------#");
+            printf("\n|  8 - Para voltar ao Menu de usuarios        |");
+            printf("\n#---------------------------------------------#");
+            printf("\n > ");
+            scanf("%d",&option);
+            if(option==8)
+                interfacePets();
         break;
 
         case(alphabetical_order):

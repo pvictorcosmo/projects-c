@@ -118,22 +118,30 @@ void insertPerson(char *file_path,char *Rg,char *Cpf,char *Name,char *Address,ch
      FILE *chvUser;
      int codUser=0;
 
-     printf("\n#-----------------------------------------#");
-     printf("\n|           LISTA DE CADASTROS            |");
-     printf("\n#-----------------------------------------#");
-
      archive=fopen(file_path,"rb");
      chvUser=fopen("keyUser.chv","rb");
 
      fseek(chvUser,0,SEEK_SET);
      fread(&codUser,sizeof(int),1,chvUser);
+
+     if(codUser==0){
+         printf("\n#-----------------------------------------#");
+         printf("\n|             NAO HA CADASTROS            |");
+         printf("\n#-----------------------------------------#");
+
+     }
+
+     printf("\n#-----------------------------------------#");
+     printf("\n|           LISTA DE CADASTROS            |");
+     printf("\n#-----------------------------------------#");
+
      for(int i=0;i<codUser;i++)
      {
 
          fseek(archive, sizeof(person) * i, SEEK_SET);
          fread(&listPerson, sizeof(person), 1, archive);
          printf("%d",listPerson.fileExist);
-         if(listPerson.fileExist) {
+         if(listPerson.fileExist==1) {
              printf("\n#-----------------------------------------#");
              printf("\n| > Codigo: %.3d                          |", listPerson.codUser);
              printf("\n#-----------------------------------------#");
