@@ -6,5 +6,6 @@ int main()
 {
 
     interfaceProgram();
+    system("pause");
 
 }

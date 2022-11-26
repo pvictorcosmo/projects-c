@@ -29,5 +29,9 @@ void deletePerson(char *file_path,int codUser);
 
 void searchByCode(char *file_path,int codUser);
 
-void searchByCodePet(char *file_path, int codPet);
+void searchByTypePet(char *file_path, char *Type);
+
+int compareName (const void *a, const void *b);
+
+void orderAlfUser(char *file_path);
 
