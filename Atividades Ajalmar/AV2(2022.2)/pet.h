@@ -16,6 +16,10 @@ void insertPetsUI();
 
 void insertPets(char *file_path,char *Name,char *Date,char *Type,int codUser);
 
+int compareNamePet (const void *a, const void *b);
+
+void orderAlfPet(char *file_path);
+
 void listPets(char *file_path);
 
 void changePetsUI();

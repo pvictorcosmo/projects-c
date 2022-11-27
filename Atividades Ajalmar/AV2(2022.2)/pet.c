@@ -3,18 +3,21 @@
 #include "user.h"
 int nextCodePet() {
     FILE *chv = NULL;
-    chv = fopen("keyPet.chv", "rb+");
+    chv = fopen("keyPets.chv", "rb+");
     if (chv == NULL)
-        chv = fopen("keyPet.chv", "wb+");
+        chv = fopen("keyPets.chv", "wb+");
 
     fseek(chv, 0, SEEK_SET);
-    fread(&cod, sizeof(int), 1, chv);
+    fread(&codPet, sizeof(int), 1, chv);
 
-    cod++;
+    codPet++;
 
     fseek(chv, 0, SEEK_SET);
-    fwrite(&cod, sizeof(int), 1, chv);
-    return cod-1;
+    fwrite(&codPet, sizeof(int), 1, chv);
+
+    fseek(chv, 0, SEEK_SET);
+    fread(&codPet, sizeof(int), 1, chv);
+    return codPet;
 }
 
 void insertPetsUI() {
@@ -53,6 +56,7 @@ void insertPets(char *file_path,char *Name,char *Date,char *Type,int codUser){
     current=malloc(sizeof(Pets));
 
     FILE *archive=NULL;
+
     archive=fopen(file_path,"rb+");
     if(archive==NULL) {
         archive=fopen(file_path,"wb+");
@@ -61,7 +65,7 @@ void insertPets(char *file_path,char *Name,char *Date,char *Type,int codUser){
     strcpy(current->namePet,Name);
     strcpy(current->datePet,Date);
     strcpy(current->typePet,Type);
-    current->codPet=nextCodePet()+1;
+    current->codPet=nextCodePet();
     current->codUser=codUser;
     current->fileExist=1;
 
@@ -78,12 +82,13 @@ void insertPets(char *file_path,char *Name,char *Date,char *Type,int codUser){
 
 void listPets(char *file_path){
     FILE *pets;
-    FILE *chvPet;
+    FILE *chvPet=NULL;
     int codPet=0;
     Pets listPets;
 
     pets=fopen(file_path,"rb");
-    chvPet=fopen("keyPet.chv","rb");
+    chvPet=fopen("keyPets.chv","rb");
+
     fseek(chvPet,0,SEEK_SET);
     fread(&codPet,sizeof(int),1,chvPet);
 
@@ -92,7 +97,7 @@ void listPets(char *file_path){
     {
         fseek(pets, sizeof(Pets) * j, SEEK_SET);
         fread(&listPets, sizeof(Pets), 1, pets);
-        if(listPets.fileExist) {
+        if(listPets.fileExist==1) {
             printf("\n#-----------------------------------------#");
             printf("\n| > Codigo: %.3d                           |", listPets.codPet);
             printf("\n#-----------------------------------------#");
@@ -198,7 +203,7 @@ void searchByUserCode(char *file_path,int codUser){
     Pets listPets;
 
     pets=fopen(file_path,"rb");
-    chvPet=fopen("keyPet.chv","rb");
+    chvPet=fopen("keyPets.chv","rb");
 
     fseek(chvPet,0,SEEK_SET);
     fread(&codPet,sizeof(int),1,chvPet);
@@ -222,5 +227,52 @@ void searchByUserCode(char *file_path,int codUser){
 
         }
     }
+
+}
+
+int compareNamePet (const void *a, const void *b) {
+    return strcmp (((Pets *)a)->namePet,((Pets *)b)->namePet);
+}
+
+void orderAlfPet(char *file_path){
+
+    Pets listPets;
+    int codPet=0;
+
+    FILE *Pet;
+    FILE *chvPet;
+
+    Pet=fopen(file_path,"rb");
+    chvPet=fopen("keyPets.chv","rb");
+
+    fread(&codPet,sizeof(int),1,chvPet);
+    printf("%d",codPet);
+    int auxCod=codPet;
+    Pets allPets[codPet-1];
+    for(int i=0;i<codPet;i++) {
+        fseek(Pet, sizeof(Pets) * i, SEEK_SET);
+        fread(&listPets,sizeof(Pets),1,Pet);
+
+        strcpy(allPets[i].namePet,listPets.namePet);
+        strcpy(allPets[i].typePet,listPets.typePet);
+        strcpy(allPets[i].datePet,listPets.datePet);
+        allPets[i].codUser=listPets.codUser;
+        allPets[i].codPet=listPets.codPet;
+    }
+
+    qsort(allPets, codPet, sizeof(Pets), compareNamePet);
+    printf("%d",allPets[0].namePet);
+    for(int i=0;i<auxCod;i++) {
+        printf("\n#-----------------------------------------#");
+        printf("\n| > Codigo: %.3d                           |", allPets[i].codPet);
+        printf("\n#-----------------------------------------#");
+        printf("\n > Nome do pet: %s", allPets[i].namePet);
+        printf(" > Data de nascimento do pet: %s", allPets[i].datePet);
+        printf(" > Tipo do pet: %s", allPets[i].typePet);
+        printf(" > Codigo do usuario: %.3d", allPets[i].codUser);
+    }
+
+
+
 
 }

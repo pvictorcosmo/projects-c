@@ -3,6 +3,7 @@
 #include "pet.h"
 
 int nextCode() {
+    int cod=0;
     FILE *chv = NULL;
     chv = fopen("keyUser.chv", "rb+");
     if (chv == NULL)
@@ -15,6 +16,10 @@ int nextCode() {
 
     fseek(chv, 0, SEEK_SET);
     fwrite(&cod, sizeof(int), 1, chv);
+
+    fseek(chv, 0, SEEK_SET);
+    fread(&cod, sizeof(int), 1, chv);
+
     return cod;
 }
 
@@ -80,7 +85,6 @@ void insertPerson(char *file_path,char *Rg,char *Cpf,char *Name,char *Address,ch
 
     int cod=0;
     current=malloc(sizeof(person));
-   // FillStrings(p,Rg,Cpf,Name,Address,Date,Phone,Income);
     strcpy(current->rgUser,Rg);
     strcpy(current->cpfUser,Cpf);
     strcpy(current->nameUser,Name);
@@ -90,7 +94,7 @@ void insertPerson(char *file_path,char *Rg,char *Cpf,char *Name,char *Address,ch
     strcpy(current->incomeUser,Income);
     current->fileExist=1;
     current->codUser=nextCode();
-  // printf("%d",current->codUser);
+    printf("%d",current->codUser);
 
 
      free(Rg);
@@ -136,12 +140,11 @@ void insertPerson(char *file_path,char *Rg,char *Cpf,char *Name,char *Address,ch
          printf("\n|             NAO HA CADASTROS            |");
          printf("\n#-----------------------------------------#");
 
+     }else {
+         printf("\n#-----------------------------------------#");
+         printf("\n|           LISTA DE CADASTROS            |");
+         printf("\n#-----------------------------------------#");
      }
-
-     printf("\n#-----------------------------------------#");
-     printf("\n|           LISTA DE CADASTROS            |");
-     printf("\n#-----------------------------------------#");
-
      for(int i=0;i<codUser;i++)
      {
 
@@ -378,13 +381,13 @@ void orderAlfUser(char *file_path){
     printf("%d",codUser);
     for(int i=0;i<auxCod;i++) {
         printf("\n#-----------------------------------------#");
-        printf("\n| > Codigo: %.3d                          |", allPersons[i].codUser);
+        printf("\n| > Codigo: %.3d                           |", allPersons[i].codUser);
         printf("\n#-----------------------------------------#");
         printf("\n > Nome: %s", allPersons[i].nameUser);
         printf(" > Cpf: %s", allPersons[i].cpfUser);
-        printf(" > Endereco: %s", allPersons[i].addressUser);
+        printf("\n > Endereco: %s", allPersons[i].addressUser);
         printf(" > Data de nascimento: %s", allPersons[i].dateUser);
-        printf(" > Telefone: %s", allPersons[i].phoneUser);
+        printf("\n > Telefone: %s", allPersons[i].phoneUser);
         printf(" > Rendimento mensal: %s", allPersons[i].incomeUser);
         printf("\n#-----------------------------------------#");
     }

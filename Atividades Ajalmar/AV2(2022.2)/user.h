@@ -1,7 +1,6 @@
 #include "init.h"
 
 #define sizeMaxNames 255
-int cod;
 typedef struct User{
   int codUser;
   char nameUser[sizeMaxNames];
@@ -15,6 +14,7 @@ typedef struct User{
 }person;
 
 int nextCode();
+
 void insertPerson(char *file_path,char *Rg,char *Cpf,char *Name,char *Address,char *Date,char *Phone,char *Income );
 
 void insertPersonUI();
