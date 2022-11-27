@@ -315,12 +315,14 @@ void searchByTypePet(char *file_path, char *Type){
 
     fseek(chvPets,0,SEEK_SET);
     fread(&codPet,sizeof(int),1,chvUser);
-    printf("%d",codPet);
+
     for(int i=0;i<codPet;i++) {
+
         fseek(archive, sizeof(Pets) * i, SEEK_SET);
         fread(&listPets, sizeof(Pets), 1, archive);
-        printf("a=%s e b=%s ",Type,listPets.typePet);
+
         if(listPets.typePet==Type){
+
             fseek(archiveUser,sizeof(person)*i,SEEK_SET);
             fread(&listPersons,sizeof(person),1,archiveUser);
 
