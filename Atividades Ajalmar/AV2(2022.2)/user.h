@@ -15,9 +15,11 @@ typedef struct User{
 
 int nextCode();
 
-void insertPerson(char *file_path,char *Rg,char *Cpf,char *Name,char *Address,char *Date,char *Phone,char *Income );
+int checkCpf(char *file_path,char *string);
 
-void insertPersonUI();
+int insertPerson(char *file_path,char *Rg,char *Cpf,char *Name,char *Address,char *Date,char *Phone,char *Income );
+
+int insertPersonUI();
 
 void listPersons(person listPerson,char *file_path);
 

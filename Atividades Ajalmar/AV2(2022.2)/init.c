@@ -80,25 +80,12 @@ void interfaceProgram() {
                 printf("\n#---------------------------------------------------#");
 
                 printf("\n#---------------------------------------------#");
-                printf("\n|                                             |");
-                printf("\n|  1 - Para adicionar outro usuario           |");
-                printf("\n|                                             |");
-                printf("\n|  2 - Para voltar ao Menu de usuarios        |");
-                printf("\n|                                             |");
+                printf("\n|  1 - Para voltar ao Menu de usuarios        |");
                 printf("\n#---------------------------------------------#");
                 printf("\n > ");
                 scanf("%d", &option);
-                switch (option) {
-                    case (1):
-                        insertPersonUI();
-                        break;
-
-                    case (2):
-                        interfaceUser();
-                        break;
-
-
-                }
+                if(option==1)
+                    interfaceUser();
                 break;
 
             case (change_users):
