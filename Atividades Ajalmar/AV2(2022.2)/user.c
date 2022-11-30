@@ -187,6 +187,9 @@ int insertPerson(char *file_path,char *Rg,char *Cpf,char *Name,char *Address,cha
          fseek(archive, sizeof(person) * i, SEEK_SET);
          fread(&listPerson, sizeof(person), 1, archive);
 
+         format(listPerson.cpfUser,"###.###.###-##",cpfFormat);
+         format(listPerson.dateUser,"##/##/####",DateFormat);
+
          if(listPerson.fileExist==1) {
              printf("\n#-----------------------------------------#");
              printf("\n| > Codigo: %.3d                           |", listPerson.codUser);
@@ -448,21 +451,24 @@ void orderAlfUser(char *file_path){
         strcpy(allPersons[i].phoneUser,listPersons.phoneUser);
         strcpy(allPersons[i].incomeUser,listPersons.incomeUser);
         allPersons[i].codUser=listPersons.codUser;
+        allPersons[i].fileExist=listPersons.fileExist;
     }
 
     qsort(allPersons, codUser, sizeof(person), compareName);
     printf("%d",codUser);
     for(int i=0;i<auxCod;i++) {
-        printf("\n#-----------------------------------------#");
-        printf("\n| > Codigo: %.3d                           |", allPersons[i].codUser);
-        printf("\n#-----------------------------------------#");
-        printf("\n > Nome: %s", allPersons[i].nameUser);
-        printf(" > Cpf: %s", allPersons[i].cpfUser);
-        printf("\n > Endereco: %s", allPersons[i].addressUser);
-        printf(" > Data de nascimento: %s", allPersons[i].dateUser);
-        printf("\n > Telefone: %s", allPersons[i].phoneUser);
-        printf(" > Rendimento mensal: %s", allPersons[i].incomeUser);
-        printf("\n#-----------------------------------------#");
+        if (allPersons[i].fileExist == 1) {
+            printf("\n#-----------------------------------------#");
+            printf("\n| > Codigo: %.3d                           |", allPersons[i].codUser);
+            printf("\n#-----------------------------------------#");
+            printf("\n > Nome: %s", allPersons[i].nameUser);
+            printf(" > Cpf: %s", allPersons[i].cpfUser);
+            printf("\n > Endereco: %s", allPersons[i].addressUser);
+            printf(" > Data de nascimento: %s", allPersons[i].dateUser);
+            printf("\n > Telefone: %s", allPersons[i].phoneUser);
+            printf(" > Rendimento mensal: %s", allPersons[i].incomeUser);
+            printf("\n#-----------------------------------------#");
+        }
     }
 
 

@@ -240,7 +240,7 @@ void interfaceProgram() {
         printf("\n|                                                  |");
         printf("\n| 6 - Listar todos os pets de um usuario           |");
         printf("\n|                                                  |");
-        printf("\n| 7 - Listar usuarios em ordem alfabetica          |");
+        printf("\n| 7 - Listar pets em ordem alfabetica              |");
         printf("\n|                                                  |");
         printf("\n| 8 - Voltar ao Menu principal                     |");
         printf("\n|                                                  |");
@@ -258,7 +258,7 @@ void interfaceProgram() {
                 printf("\n#---------------------------------------------------#");
                 do {
                     printf("\n#---------------------------------------------#");
-                    printf("\n|  1 - Para voltar ao Menu de usuarios        |");
+                    printf("\n|  1 - Para voltar ao Menu de pets            |");
                     printf("\n#---------------------------------------------#");
                     printf("\n > ");
                     scanf("%d", &option);
@@ -271,7 +271,7 @@ void interfaceProgram() {
                 changePetsUI();
                 do {
                     printf("\n#---------------------------------------------#");
-                    printf("\n|  1 - Para voltar ao Menu de usuarios        |");
+                    printf("\n|  1 - Para voltar ao Menu de pets            |");
                     printf("\n#---------------------------------------------#");
                     printf("\n > ");
                     scanf("%d", &option);
@@ -281,6 +281,27 @@ void interfaceProgram() {
                 break;
 
             case (delete_pets):
+                printf("\n#---------------------------------------------------#");
+                printf("\n|   DIGITE O CODIGO DO USUARIO QUE DESEJA EXCLUIR   |");
+                printf("\n#---------------------------------------------------#");
+                printf("\n > ");
+                scanf("%d", &codPet);
+
+                deletePets("pets.bin", codPet);
+
+                printf("\n#---------------------------------------------------#");
+                printf("\n|          USUARIO EXCLUIDO COM SUCESSO             |");
+                printf("\n#---------------------------------------------------#");
+
+                do {
+                    printf("\n#---------------------------------------------#");
+                    printf("\n|  1 - Para voltar ao Menu de pets            |");
+                    printf("\n#---------------------------------------------#");
+                    printf("\n > ");
+                    scanf("%d", &option);
+                    if (option == 1)
+                        interfacePets();
+                } while (option != 1);
 
             break;
 
@@ -300,10 +321,11 @@ void interfaceProgram() {
 
             case (search_by_code):
                 printf("\n#---------------------------------------------------#");
-                printf("\n|            DIGITE O CODIGO DO USUARIO             |");
+                printf("\n|            DIGITE O CODIGO DO PET                 |");
                 printf("\n#---------------------------------------------------#");
                 printf("\n > ");
                 scanf("%d", &codPet);
+                searchByPetCode("pets.bin",codPet);
 
                 do {
                     printf("\n#---------------------------------------------#");
@@ -338,6 +360,15 @@ void interfaceProgram() {
 
             case (alphabetical_order):
                 orderAlfPet("pets.bin");
+                do {
+                    printf("\n#---------------------------------------------#");
+                    printf("\n|  1 - Para voltar ao Menu de usuarios        |");
+                    printf("\n#---------------------------------------------#");
+                    printf("\n > ");
+                    scanf("%d", &option);
+                    if (option == 1)
+                        interfacePets();
+                } while (option != 1);
                 break;
 
             case (main_menu):

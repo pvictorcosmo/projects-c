@@ -18,11 +18,11 @@ void insertPetsUI();
 
 int checkCodUser(char *file_path,int codUser);
 
-int checkCodUser(char *file_path,int codUser);
+int checkCodPet(char *file_path,int codUser);
 
 void insertPets(char *file_path,char *Name,char *Date,char *Type,int codUser);
 
-int deletePerson(char *file_path,int codPet);
+int deletePets(char *file_path,int codPet);
 
 int compareNamePet (const void *a, const void *b);
 
@@ -32,10 +32,10 @@ void listPets(char *file_path);
 
 void changePetsUI();
 
-void changePets(char *file_path,char *Name,char *Date,char *Type,int codPet);
+void changePets(char *file_path,char *Name,char *Date,char *Type,int codUser,int codPet);
 
 void searchByPetCode(char *file_path,int codPet);
 
-void searchByUserCode(char *file_path,int codUser);
+int searchByUserCode(char *file_path,int codUser);
 
 #endif //PET_H
