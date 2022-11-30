@@ -1,0 +1,3 @@
+C:/Users/Rosemary/Documents/GitHub/projects-c/Atividades Ajalmar/AV2(2022.22)/cmake-build-debug/CMakeFiles/AV2_2022_22_.dir
+C:/Users/Rosemary/Documents/GitHub/projects-c/Atividades Ajalmar/AV2(2022.22)/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/Rosemary/Documents/GitHub/projects-c/Atividades Ajalmar/AV2(2022.22)/cmake-build-debug/CMakeFiles/rebuild_cache.dir

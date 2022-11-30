@@ -1,3 +1,6 @@
+#ifndef INIT_H
+#define INIT_H
+
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
@@ -10,3 +13,4 @@ void interfacePets();
 
 void format(char *text,char *format,char *final);
 
+#endif //INIT_H

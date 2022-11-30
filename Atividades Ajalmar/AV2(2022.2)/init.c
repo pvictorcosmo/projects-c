@@ -30,7 +30,6 @@ void interfaceProgram() {
         }
     }while (option != 1);
 
-
 }
 
     void interfaceUser() {
@@ -79,14 +78,17 @@ void interfaceProgram() {
                 printf("\n|          USUARIO INSERIDO COM SUCESSO             |");
                 printf("\n#---------------------------------------------------#");
 
-                printf("\n#---------------------------------------------#");
-                printf("\n|  1 - Para voltar ao Menu de usuarios        |");
-                printf("\n#---------------------------------------------#");
-                printf("\n > ");
-                scanf("%d", &option);
-                if(option==1)
-                    interfaceUser();
-                break;
+                do {
+                    printf("\n#---------------------------------------------------#");
+                    printf("\n|  1 - Para voltar ao Menu de usuarios              |");
+                    printf("\n#---------------------------------------------------#");
+                    printf("\n > ");
+                    scanf("%d", &option);
+                    if (option == 1) {
+                        interfaceUser();
+                    }
+                }while(option!=1);
+            break;
 
             case (change_users):
                 changePersonUI();
@@ -95,31 +97,18 @@ void interfaceProgram() {
                 printf("\n|          USUARIO ALTERADO COM SUCESSO             |");
                 printf("\n#---------------------------------------------------#");
 
-                printf("\n#---------------------------------------------#");
-                printf("\n|                                             |");
-                printf("\n|  1 - Para alterar outro usuario             |");
-                printf("\n|                                             |");
-                printf("\n|  2 - Para voltar ao Menu de usuarios        |");
-                printf("\n|                                             |");
-                printf("\n#---------------------------------------------#");
+                do {
+                printf("\n#---------------------------------------------------#");
+                printf("\n|  1 - Para voltar ao Menu de usuarios              |");
+                printf("\n#---------------------------------------------------#");
+
                 printf("\n > ");
                 scanf("%d", &option);
-                switch (option) {
-                    case (1):
-                        changePersonUI();
-                        break;
-
-                    case (2):
+                    if (option == 1) {
                         interfaceUser();
-                        break;
-
-                    default:
-                        printf("\n#---------------------------------------------------#");
-                        printf("\n|                 OPCAO INEXISTENTE                 |");
-                        printf("\n#---------------------------------------------------#");
-                        interfaceUser();
-                }
-                break;
+                    }
+                }while(option!=1);
+            break;
 
             case (delete_users):
                 printf("\n#---------------------------------------------------#");
@@ -148,9 +137,9 @@ void interfaceProgram() {
             case (list_users):
                 listPersons(listPerson, "persons.bin");
                 do {
-                    printf("\n#---------------------------------------------#");
-                    printf("\n|  1 - Para voltar ao Menu de usuarios        |");
-                    printf("\n#---------------------------------------------#");
+                    printf("\n#-----------------------------------------#");
+                    printf("\n|  1 - Para voltar ao Menu de usuarios    |");
+                    printf("\n#-----------------------------------------#");
                     printf("\n > ");
                     scanf("%d", &option);
                     if (option == 1)
@@ -167,13 +156,13 @@ void interfaceProgram() {
                 scanf("%d", &codUser);
                 searchByCode("persons.bin", codUser);
                 do {
-                    printf("\n#---------------------------------------------#");
-                    printf("\n|  1 - Para voltar ao Menu de usuarios        |");
-                    printf("\n#---------------------------------------------#");
+                    printf("\n#---------------------------------------------------#");
+                    printf("\n|  1 - Para voltar ao Menu de usuarios              |");
+                    printf("\n#---------------------------------------------------#");
                     printf("\n > ");
                     scanf("%d", &option);
                     if (option == 1)
-                        interfacePets();
+                        interfaceUser();
                 } while (option != 1);
                 break;
 
@@ -184,7 +173,8 @@ void interfaceProgram() {
                 printf("\n|                DIGITE O TIPO DE PET               |");
                 printf("\n#---------------------------------------------------#");
                 printf("\n > ");
-                scanf("%s", &TypePet);
+                fflush(stdin);
+                fgets(TypePet,50,stdin);
                 searchByTypePet("pets.bin", TypePet);
                 do {
                     printf("\n#---------------------------------------------#");
@@ -193,7 +183,7 @@ void interfaceProgram() {
                     printf("\n > ");
                     scanf("%d", &option);
                     if (option == 1)
-                        interfacePets();
+                        interfaceUser();
                 } while (option != 1);
                 break;
 
@@ -206,7 +196,7 @@ void interfaceProgram() {
                     printf("\n > ");
                     scanf("%d", &option);
                     if (option == 1)
-                        interfacePets();
+                        interfaceUser();
                 } while (option != 1);
                 break;
 
@@ -223,7 +213,7 @@ void interfaceProgram() {
 
     }
 
-    void interfacePets() {
+    void interfacePets(){
         int option, codUser, codPet;
         enum options {
             add_pets = 1,
@@ -262,6 +252,10 @@ void interfaceProgram() {
 
             case (add_pets):
                 insertPetsUI();
+
+                printf("\n#---------------------------------------------------#");
+                printf("\n|             PET INSERIDO COM SUCESSO              |");
+                printf("\n#---------------------------------------------------#");
                 do {
                     printf("\n#---------------------------------------------#");
                     printf("\n|  1 - Para voltar ao Menu de usuarios        |");
@@ -287,7 +281,8 @@ void interfaceProgram() {
                 break;
 
             case (delete_pets):
-                break;
+
+            break;
 
             case (list_pets):
                 listPets("pets.bin");

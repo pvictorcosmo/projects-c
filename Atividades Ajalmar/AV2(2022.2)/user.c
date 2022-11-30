@@ -44,7 +44,7 @@ int checkCpf(char *file_path,char *string){
         fseek(chv,sizeof(person)*i,SEEK_SET);
         fread(&listPersons,sizeof(person),1,Person);
 
-        if(strcmp(listPersons.cpfUser,string)==0){
+        if(!strcmp(listPersons.cpfUser,string)){
             return 0;
         }
     }
@@ -173,23 +173,19 @@ int insertPerson(char *file_path,char *Rg,char *Cpf,char *Name,char *Address,cha
      fread(&codUser,sizeof(int),1,chvUser);
 
      if(codUser==0){
-         printf("\n#-----------------------------------------#");
-         printf("\n|             NAO HA CADASTROS            |");
-         printf("\n#-----------------------------------------#");
+         printf("\n#---------------------------------------------------#");
+         printf("\n|                 NAO HA CADASTROS                  |");
+         printf("\n#---------------------------------------------------#");
 
      }else {
-         printf("\n#-----------------------------------------#");
-         printf("\n|           LISTA DE CADASTROS            |");
-         printf("\n#-----------------------------------------#");
+         printf("\n#---------------------------------------------------#");
+         printf("\n|                LISTA DE CADASTROS                 |");
+         printf("\n#---------------------------------------------------#");
      }
-     for(int i=0;i<codUser;i++)
-     {
+     for(int i=0;i<codUser;i++){
 
          fseek(archive, sizeof(person) * i, SEEK_SET);
          fread(&listPerson, sizeof(person), 1, archive);
-
-         format(listPerson.cpfUser,"###.###.###-##",cpfFormat);
-         format(listPerson.dateUser,"##/##/####",DateFormat);
 
          if(listPerson.fileExist==1) {
              printf("\n#-----------------------------------------#");
@@ -201,7 +197,8 @@ int insertPerson(char *file_path,char *Rg,char *Cpf,char *Name,char *Address,cha
              printf(" > Data de nascimento: %s", DateFormat);
              printf("\n > Telefone: %s", listPerson.phoneUser);
              printf(" > Rendimento mensal: R$: %s", listPerson.incomeUser);
-             printf("\n#---------------------------------------------------#");
+             printf("\n#-----------------------------------------#");
+
          }
 
      }
@@ -254,10 +251,16 @@ int insertPerson(char *file_path,char *Rg,char *Cpf,char *Name,char *Address,cha
      printf(" > Rendimento Mensal:");
      fflush(stdin);
      fgets(Income, 20, stdin);
+     if(strlen(Name)>0 && strlen(Cpf)==11 && strlen(Date)==8) {
+         changePerson("persons.bin", Rg, Cpf, Name, Address, Date, Phone, Income,codUser);
+     }
+     else{
+         printf("\n#-------------------------------------------------#");
+         printf("\n|   INFORMACOES ERRADAS FAVOR INSERIR NOVAMENTE   |");
+         printf("\n#-------------------------------------------------#");
+         changePersonUI();
+     }
 
-     //fgets é pra pegar as strings com espaço, o fflush serve pra tirar todo o lixo da string
-
-     changePerson("persons.bin",Rg,Cpf,Name,Address,Date,Phone,Income,codUser);
 
 }
 
@@ -280,6 +283,7 @@ void changePerson(char *file_path,char *Rg,char *Cpf,char *Name,char *Address,ch
     strcpy(current->phoneUser,Phone);
     strcpy(current->incomeUser,Income);
     current->codUser=codUser+1;
+    current->fileExist=1;
 
     free(Rg);
     free(Cpf);
@@ -347,51 +351,57 @@ void searchByCode(char *file_path,int codUser){
 
     format(listPerson.cpfUser,"###.###.###-##",cpfFormat);
     format(listPerson.dateUser,"##/##/####",DateFormat);
-
-    printf("\n#-----------------------------------------#");
-    printf("\n| > Codigo: %.3d                          |", listPerson.codUser);
-    printf("\n#-----------------------------------------#");
-    printf("\n > Nome: %s", listPerson.nameUser);
-    printf(" > Cpf: %s", listPerson.cpfUser);
-    printf(" > Endereco: %s", listPerson.addressUser);
-    printf(" > Data de nascimento: %s", listPerson.dateUser);
-    printf(" > Telefone: %s", listPerson.phoneUser);
-    printf(" > Rendimento mensal: %s", listPerson.incomeUser);
-    printf("\n#-----------------------------------------#");
-
+    if(listPerson.fileExist==1) {
+        printf("\n#-----------------------------------------#");
+        printf("\n| > Codigo: %.3d                          |", listPerson.codUser);
+        printf("\n#-----------------------------------------#");
+        printf("\n > Nome: %s", listPerson.nameUser);
+        printf(" > Cpf: %s", listPerson.cpfUser);
+        printf("\n > Endereco: %s", listPerson.addressUser);
+        printf(" > Data de nascimento: %s", listPerson.dateUser);
+        printf("\n > Telefone: %s", listPerson.phoneUser);
+        printf(" > Rendimento mensal: %s", listPerson.incomeUser);
+        printf("\n#-----------------------------------------#");
+    }
+    else{
+        printf("\n#---------------------------------------------------#");
+        printf("\n|              USUARIO NAO ENCONTRADO               |");
+        printf("\n#---------------------------------------------------#");
+    }
 }
 
 void searchByTypePet(char *file_path, char *Type){
     int codPet=0;
     char *cpfFormat=(char *)malloc(sizeof(char)*14);
     char *DateFormat=(char *)malloc(sizeof(char)*12);
-    codPet--;
-    FILE *archive=NULL,*archiveUser=NULL,*chvUser,*chvPets;
+    FILE *FilePets;
+    FILE *FileUser;
+    FILE *chvPets;
     Pets listPets;
     person listUser;
 
-    archive=fopen(file_path,"rb");
-    archiveUser=fopen("persons.bin","rb");
-    chvUser=fopen("keyPets.chv","rb");
+    FilePets=fopen(file_path,"rb");
+    FileUser=fopen("persons.bin","rb+");
+
+    chvPets=fopen("keyPets.chv","rb");
 
     fseek(chvPets,0,SEEK_SET);
-    fread(&codPet,sizeof(int),1,chvUser);
+    fread(&codPet,sizeof(int),1,chvPets);
 
     for(int i=0;i<codPet;i++) {
 
-        fseek(archive, sizeof(Pets) * i, SEEK_SET);
-        fread(&listPets, sizeof(Pets), 1, archive);
+        fseek(FilePets, sizeof(Pets) * i, SEEK_SET);
+        fread(&listPets, sizeof(Pets), 1, FilePets);
 
-        if(listPets.typePet==Type){
-
-            fseek(archiveUser,sizeof(person)*i,SEEK_SET);
-            fread(&listPersons,sizeof(person),1,archiveUser);
+        if(!strcmp(listPets.typePet,Type)){
+            fseek(FileUser,sizeof(person)*i,SEEK_SET);
+            fread(&listUser,sizeof(person),1,FileUser);
 
             format(listUser.cpfUser,"###.###.###-##",cpfFormat);
             format(listUser.dateUser,"##/##/####",DateFormat);
 
             printf("\n#-----------------------------------------#");
-            printf("\n| > Codigo: %.3d                          |", listUser.codUser);
+            printf("\n| > Codigo: %.3d                           |", listUser.codUser);
             printf("\n#-----------------------------------------#");
             printf("\n > Nome: %s", listUser.nameUser);
             printf(" > Cpf: %s", cpfFormat);
@@ -399,7 +409,7 @@ void searchByTypePet(char *file_path, char *Type){
             printf(" > Data de nascimento: %s", DateFormat);
             printf(" > Telefone: %s", listUser.phoneUser);
             printf(" > Rendimento mensal: %s", listUser.incomeUser);
-            printf("\n#-----------------------------------------#");
+            printf("\n#--------------------------------------------#");
 
         }
     }

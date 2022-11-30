@@ -1,3 +1,6 @@
+#ifndef PET_H
+#define PET_H
+
 #define sizeMaxNames 255
 int codPet;
 typedef struct Pet{
@@ -6,7 +9,6 @@ typedef struct Pet{
     int codPet;
     int codUser;
     char typePet[50];
-    struct Pet *next;
     int fileExist;
 }Pets;
 
@@ -16,7 +18,11 @@ void insertPetsUI();
 
 int checkCodUser(char *file_path,int codUser);
 
+int checkCodUser(char *file_path,int codUser);
+
 void insertPets(char *file_path,char *Name,char *Date,char *Type,int codUser);
+
+int deletePerson(char *file_path,int codPet);
 
 int compareNamePet (const void *a, const void *b);
 
@@ -31,3 +37,5 @@ void changePets(char *file_path,char *Name,char *Date,char *Type,int codPet);
 void searchByPetCode(char *file_path,int codPet);
 
 void searchByUserCode(char *file_path,int codUser);
+
+#endif //PET_H

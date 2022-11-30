@@ -1,8 +1,0 @@
-# ninja log v5
-8	262	6905800867770719	CMakeFiles/AV2_2022_2_.dir/testes/main3.c.obj	a4d3d7bbe8ec29f0
-1	272	6905800867770719	CMakeFiles/AV2_2022_2_.dir/testes/main2.c.obj	185d231f6f56d490
-38	298	6905800868139723	CMakeFiles/AV2_2022_2_.dir/testes/teste2.c.obj	3ff22b54f5193bd4
-273	449	6905800869755409	CMakeFiles/AV2_2022_2_.dir/testes/testess.c.obj	a529ec973f0f2082
-298	516	6905800870194237	CMakeFiles/AV2_2022_2_.dir/main.c.obj	fd4204934dd91fb3
-30	486	6905845209786647	CMakeFiles/AV2_2022_2_.dir/init.c.obj	a96676a6a735777f
-27	487	6905845209786647	CMakeFiles/AV2_2022_2_.dir/pet.c.obj	aa28f04c51df3ecb

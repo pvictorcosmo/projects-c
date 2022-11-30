@@ -11,7 +11,7 @@
 # =============================================================================
 
 # =============================================================================
-# Project: AV2_2022_2_
+# Project: AV2_2022_22_
 # Configurations: Debug
 # =============================================================================
 
@@ -39,122 +39,77 @@ include CMakeFiles/rules.ninja
 #############################################
 # Logical path to working directory; prefix for absolute paths.
 
-cmake_ninja_workdir = C$:/Users/Rosemary/Desktop/AV2(2022.2)/cmake-build-debug/
+cmake_ninja_workdir = C$:/Users/Rosemary/Documents/GitHub/projects-c/Atividades$ Ajalmar/AV2(2022.22)/cmake-build-debug/
 # =============================================================================
-# Object build statements for EXECUTABLE target AV2_2022_2_
+# Object build statements for EXECUTABLE target AV2_2022_22_
 
 
 #############################################
-# Order-only phony target for AV2_2022_2_
+# Order-only phony target for AV2_2022_22_
 
-build cmake_object_order_depends_target_AV2_2022_2_: phony || CMakeFiles/AV2_2022_2_.dir
+build cmake_object_order_depends_target_AV2_2022_22_: phony || CMakeFiles/AV2_2022_22_.dir
 
-build CMakeFiles/AV2_2022_2_.dir/testes/main2.c.obj: C_COMPILER__AV2_2022_2__Debug C$:/Users/Rosemary/Desktop/AV2(2022.2)/testes/main2.c || cmake_object_order_depends_target_AV2_2022_2_
-  DEP_FILE = CMakeFiles\AV2_2022_2_.dir\testes\main2.c.obj.d
+build CMakeFiles/AV2_2022_22_.dir/init.c.obj: C_COMPILER__AV2_2022_22__Debug C$:/Users/Rosemary/Documents/GitHub/projects-c/Atividades$ Ajalmar/AV2(2022.22)/init.c || cmake_object_order_depends_target_AV2_2022_22_
+  DEP_FILE = CMakeFiles\AV2_2022_22_.dir\init.c.obj.d
   FLAGS = -g -std=gnu11
-  INCLUDES = -IC:/Users/Rosemary/Desktop/AV2(2022.2)/.
-  OBJECT_DIR = CMakeFiles\AV2_2022_2_.dir
-  OBJECT_FILE_DIR = CMakeFiles\AV2_2022_2_.dir\testes
-  TARGET_COMPILE_PDB = CMakeFiles\AV2_2022_2_.dir\
-  TARGET_PDB = AV2_2022_2_.pdb
+  INCLUDES = -I"C:/Users/Rosemary/Documents/GitHub/projects-c/Atividades Ajalmar/AV2(2022.22)/."
+  OBJECT_DIR = CMakeFiles\AV2_2022_22_.dir
+  OBJECT_FILE_DIR = CMakeFiles\AV2_2022_22_.dir
+  TARGET_COMPILE_PDB = CMakeFiles\AV2_2022_22_.dir\
+  TARGET_PDB = AV2_2022_22_.pdb
 
-build CMakeFiles/AV2_2022_2_.dir/testes/main3.c.obj: C_COMPILER__AV2_2022_2__Debug C$:/Users/Rosemary/Desktop/AV2(2022.2)/testes/main3.c || cmake_object_order_depends_target_AV2_2022_2_
-  DEP_FILE = CMakeFiles\AV2_2022_2_.dir\testes\main3.c.obj.d
+build CMakeFiles/AV2_2022_22_.dir/main.c.obj: C_COMPILER__AV2_2022_22__Debug C$:/Users/Rosemary/Documents/GitHub/projects-c/Atividades$ Ajalmar/AV2(2022.22)/main.c || cmake_object_order_depends_target_AV2_2022_22_
+  DEP_FILE = CMakeFiles\AV2_2022_22_.dir\main.c.obj.d
   FLAGS = -g -std=gnu11
-  INCLUDES = -IC:/Users/Rosemary/Desktop/AV2(2022.2)/.
-  OBJECT_DIR = CMakeFiles\AV2_2022_2_.dir
-  OBJECT_FILE_DIR = CMakeFiles\AV2_2022_2_.dir\testes
-  TARGET_COMPILE_PDB = CMakeFiles\AV2_2022_2_.dir\
-  TARGET_PDB = AV2_2022_2_.pdb
+  INCLUDES = -I"C:/Users/Rosemary/Documents/GitHub/projects-c/Atividades Ajalmar/AV2(2022.22)/."
+  OBJECT_DIR = CMakeFiles\AV2_2022_22_.dir
+  OBJECT_FILE_DIR = CMakeFiles\AV2_2022_22_.dir
+  TARGET_COMPILE_PDB = CMakeFiles\AV2_2022_22_.dir\
+  TARGET_PDB = AV2_2022_22_.pdb
 
-build CMakeFiles/AV2_2022_2_.dir/testes/teste.c.obj: C_COMPILER__AV2_2022_2__Debug C$:/Users/Rosemary/Desktop/AV2(2022.2)/testes/teste.c || cmake_object_order_depends_target_AV2_2022_2_
-  DEP_FILE = CMakeFiles\AV2_2022_2_.dir\testes\teste.c.obj.d
+build CMakeFiles/AV2_2022_22_.dir/pet.c.obj: C_COMPILER__AV2_2022_22__Debug C$:/Users/Rosemary/Documents/GitHub/projects-c/Atividades$ Ajalmar/AV2(2022.22)/pet.c || cmake_object_order_depends_target_AV2_2022_22_
+  DEP_FILE = CMakeFiles\AV2_2022_22_.dir\pet.c.obj.d
   FLAGS = -g -std=gnu11
-  INCLUDES = -IC:/Users/Rosemary/Desktop/AV2(2022.2)/.
-  OBJECT_DIR = CMakeFiles\AV2_2022_2_.dir
-  OBJECT_FILE_DIR = CMakeFiles\AV2_2022_2_.dir\testes
-  TARGET_COMPILE_PDB = CMakeFiles\AV2_2022_2_.dir\
-  TARGET_PDB = AV2_2022_2_.pdb
+  INCLUDES = -I"C:/Users/Rosemary/Documents/GitHub/projects-c/Atividades Ajalmar/AV2(2022.22)/."
+  OBJECT_DIR = CMakeFiles\AV2_2022_22_.dir
+  OBJECT_FILE_DIR = CMakeFiles\AV2_2022_22_.dir
+  TARGET_COMPILE_PDB = CMakeFiles\AV2_2022_22_.dir\
+  TARGET_PDB = AV2_2022_22_.pdb
 
-build CMakeFiles/AV2_2022_2_.dir/testes/teste2.c.obj: C_COMPILER__AV2_2022_2__Debug C$:/Users/Rosemary/Desktop/AV2(2022.2)/testes/teste2.c || cmake_object_order_depends_target_AV2_2022_2_
-  DEP_FILE = CMakeFiles\AV2_2022_2_.dir\testes\teste2.c.obj.d
+build CMakeFiles/AV2_2022_22_.dir/user.c.obj: C_COMPILER__AV2_2022_22__Debug C$:/Users/Rosemary/Documents/GitHub/projects-c/Atividades$ Ajalmar/AV2(2022.22)/user.c || cmake_object_order_depends_target_AV2_2022_22_
+  DEP_FILE = CMakeFiles\AV2_2022_22_.dir\user.c.obj.d
   FLAGS = -g -std=gnu11
-  INCLUDES = -IC:/Users/Rosemary/Desktop/AV2(2022.2)/.
-  OBJECT_DIR = CMakeFiles\AV2_2022_2_.dir
-  OBJECT_FILE_DIR = CMakeFiles\AV2_2022_2_.dir\testes
-  TARGET_COMPILE_PDB = CMakeFiles\AV2_2022_2_.dir\
-  TARGET_PDB = AV2_2022_2_.pdb
-
-build CMakeFiles/AV2_2022_2_.dir/testes/testess.c.obj: C_COMPILER__AV2_2022_2__Debug C$:/Users/Rosemary/Desktop/AV2(2022.2)/testes/testess.c || cmake_object_order_depends_target_AV2_2022_2_
-  DEP_FILE = CMakeFiles\AV2_2022_2_.dir\testes\testess.c.obj.d
-  FLAGS = -g -std=gnu11
-  INCLUDES = -IC:/Users/Rosemary/Desktop/AV2(2022.2)/.
-  OBJECT_DIR = CMakeFiles\AV2_2022_2_.dir
-  OBJECT_FILE_DIR = CMakeFiles\AV2_2022_2_.dir\testes
-  TARGET_COMPILE_PDB = CMakeFiles\AV2_2022_2_.dir\
-  TARGET_PDB = AV2_2022_2_.pdb
-
-build CMakeFiles/AV2_2022_2_.dir/init.c.obj: C_COMPILER__AV2_2022_2__Debug C$:/Users/Rosemary/Desktop/AV2(2022.2)/init.c || cmake_object_order_depends_target_AV2_2022_2_
-  DEP_FILE = CMakeFiles\AV2_2022_2_.dir\init.c.obj.d
-  FLAGS = -g -std=gnu11
-  INCLUDES = -IC:/Users/Rosemary/Desktop/AV2(2022.2)/.
-  OBJECT_DIR = CMakeFiles\AV2_2022_2_.dir
-  OBJECT_FILE_DIR = CMakeFiles\AV2_2022_2_.dir
-  TARGET_COMPILE_PDB = CMakeFiles\AV2_2022_2_.dir\
-  TARGET_PDB = AV2_2022_2_.pdb
-
-build CMakeFiles/AV2_2022_2_.dir/main.c.obj: C_COMPILER__AV2_2022_2__Debug C$:/Users/Rosemary/Desktop/AV2(2022.2)/main.c || cmake_object_order_depends_target_AV2_2022_2_
-  DEP_FILE = CMakeFiles\AV2_2022_2_.dir\main.c.obj.d
-  FLAGS = -g -std=gnu11
-  INCLUDES = -IC:/Users/Rosemary/Desktop/AV2(2022.2)/.
-  OBJECT_DIR = CMakeFiles\AV2_2022_2_.dir
-  OBJECT_FILE_DIR = CMakeFiles\AV2_2022_2_.dir
-  TARGET_COMPILE_PDB = CMakeFiles\AV2_2022_2_.dir\
-  TARGET_PDB = AV2_2022_2_.pdb
-
-build CMakeFiles/AV2_2022_2_.dir/pet.c.obj: C_COMPILER__AV2_2022_2__Debug C$:/Users/Rosemary/Desktop/AV2(2022.2)/pet.c || cmake_object_order_depends_target_AV2_2022_2_
-  DEP_FILE = CMakeFiles\AV2_2022_2_.dir\pet.c.obj.d
-  FLAGS = -g -std=gnu11
-  INCLUDES = -IC:/Users/Rosemary/Desktop/AV2(2022.2)/.
-  OBJECT_DIR = CMakeFiles\AV2_2022_2_.dir
-  OBJECT_FILE_DIR = CMakeFiles\AV2_2022_2_.dir
-  TARGET_COMPILE_PDB = CMakeFiles\AV2_2022_2_.dir\
-  TARGET_PDB = AV2_2022_2_.pdb
-
-build CMakeFiles/AV2_2022_2_.dir/user.c.obj: C_COMPILER__AV2_2022_2__Debug C$:/Users/Rosemary/Desktop/AV2(2022.2)/user.c || cmake_object_order_depends_target_AV2_2022_2_
-  DEP_FILE = CMakeFiles\AV2_2022_2_.dir\user.c.obj.d
-  FLAGS = -g -std=gnu11
-  INCLUDES = -IC:/Users/Rosemary/Desktop/AV2(2022.2)/.
-  OBJECT_DIR = CMakeFiles\AV2_2022_2_.dir
-  OBJECT_FILE_DIR = CMakeFiles\AV2_2022_2_.dir
-  TARGET_COMPILE_PDB = CMakeFiles\AV2_2022_2_.dir\
-  TARGET_PDB = AV2_2022_2_.pdb
+  INCLUDES = -I"C:/Users/Rosemary/Documents/GitHub/projects-c/Atividades Ajalmar/AV2(2022.22)/."
+  OBJECT_DIR = CMakeFiles\AV2_2022_22_.dir
+  OBJECT_FILE_DIR = CMakeFiles\AV2_2022_22_.dir
+  TARGET_COMPILE_PDB = CMakeFiles\AV2_2022_22_.dir\
+  TARGET_PDB = AV2_2022_22_.pdb
 
 
 # =============================================================================
-# Link build statements for EXECUTABLE target AV2_2022_2_
+# Link build statements for EXECUTABLE target AV2_2022_22_
 
 
 #############################################
-# Link the executable AV2_2022_2_.exe
+# Link the executable AV2_2022_22_.exe
 
-build AV2_2022_2_.exe: C_EXECUTABLE_LINKER__AV2_2022_2__Debug CMakeFiles/AV2_2022_2_.dir/testes/main2.c.obj CMakeFiles/AV2_2022_2_.dir/testes/main3.c.obj CMakeFiles/AV2_2022_2_.dir/testes/teste.c.obj CMakeFiles/AV2_2022_2_.dir/testes/teste2.c.obj CMakeFiles/AV2_2022_2_.dir/testes/testess.c.obj CMakeFiles/AV2_2022_2_.dir/init.c.obj CMakeFiles/AV2_2022_2_.dir/main.c.obj CMakeFiles/AV2_2022_2_.dir/pet.c.obj CMakeFiles/AV2_2022_2_.dir/user.c.obj
+build AV2_2022_22_.exe: C_EXECUTABLE_LINKER__AV2_2022_22__Debug CMakeFiles/AV2_2022_22_.dir/init.c.obj CMakeFiles/AV2_2022_22_.dir/main.c.obj CMakeFiles/AV2_2022_22_.dir/pet.c.obj CMakeFiles/AV2_2022_22_.dir/user.c.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
-  OBJECT_DIR = CMakeFiles\AV2_2022_2_.dir
+  OBJECT_DIR = CMakeFiles\AV2_2022_22_.dir
   POST_BUILD = cd .
   PRE_LINK = cd .
-  TARGET_COMPILE_PDB = CMakeFiles\AV2_2022_2_.dir\
-  TARGET_FILE = AV2_2022_2_.exe
-  TARGET_IMPLIB = libAV2_2022_2_.dll.a
-  TARGET_PDB = AV2_2022_2_.pdb
+  TARGET_COMPILE_PDB = CMakeFiles\AV2_2022_22_.dir\
+  TARGET_FILE = AV2_2022_22_.exe
+  TARGET_IMPLIB = libAV2_2022_22_.dll.a
+  TARGET_PDB = AV2_2022_22_.pdb
 
 
 #############################################
 # Utility command for edit_cache
 
 build CMakeFiles/edit_cache.util: CUSTOM_COMMAND
-  COMMAND = cmd.exe /C "cd /D C:\Users\Rosemary\Desktop\AV2(2022.2)\cmake-build-debug && "C:\Program Files\JetBrains\CLion 2022.2.4\bin\cmake\win\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
+  COMMAND = cmd.exe /C "cd /D "C:\Users\Rosemary\Documents\GitHub\projects-c\Atividades Ajalmar\AV2(2022.22)\cmake-build-debug" && "C:\Program Files\JetBrains\CLion 2022.2.4\bin\cmake\win\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
   DESC = No interactive CMake dialog available...
   restat = 1
 
@@ -165,7 +120,7 @@ build edit_cache: phony CMakeFiles/edit_cache.util
 # Utility command for rebuild_cache
 
 build CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = cmd.exe /C "cd /D C:\Users\Rosemary\Desktop\AV2(2022.2)\cmake-build-debug && "C:\Program Files\JetBrains\CLion 2022.2.4\bin\cmake\win\bin\cmake.exe" --regenerate-during-build -SC:\Users\Rosemary\Desktop\AV2(2022.2) -BC:\Users\Rosemary\Desktop\AV2(2022.2)\cmake-build-debug"
+  COMMAND = cmd.exe /C "cd /D "C:\Users\Rosemary\Documents\GitHub\projects-c\Atividades Ajalmar\AV2(2022.22)\cmake-build-debug" && "C:\Program Files\JetBrains\CLion 2022.2.4\bin\cmake\win\bin\cmake.exe" --regenerate-during-build -S"C:\Users\Rosemary\Documents\GitHub\projects-c\Atividades Ajalmar\AV2(2022.22)" -B"C:\Users\Rosemary\Documents\GitHub\projects-c\Atividades Ajalmar\AV2(2022.22)\cmake-build-debug""
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -175,7 +130,7 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 # =============================================================================
 # Target aliases.
 
-build AV2_2022_2_: phony AV2_2022_2_.exe
+build AV2_2022_22_: phony AV2_2022_22_.exe
 
 # =============================================================================
 # Folder targets.
@@ -183,9 +138,9 @@ build AV2_2022_2_: phony AV2_2022_2_.exe
 # =============================================================================
 
 #############################################
-# Folder: C:/Users/Rosemary/Desktop/AV2(2022.2)/cmake-build-debug
+# Folder: C:/Users/Rosemary/Documents/GitHub/projects-c/Atividades Ajalmar/AV2(2022.22)/cmake-build-debug
 
-build all: phony AV2_2022_2_.exe
+build all: phony AV2_2022_22_.exe
 
 # =============================================================================
 # Built-in targets

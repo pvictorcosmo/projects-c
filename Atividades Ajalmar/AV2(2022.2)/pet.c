@@ -66,7 +66,6 @@ void insertPetsUI() {
     scanf("%d", &codUser);
 
     if (!checkCodUser("keyUser.chv", codUser)) {
-        printf("%d",checkCodUser("keyUser.chv", codUser));
         insertPets("pets.bin", Name, Date, Type, codUser);
     }
     else {
@@ -112,6 +111,44 @@ void insertPets(char *file_path,char *Name,char *Date,char *Type,int codUser){
     fclose(archive);
     free(current);
 
+}
+
+int deletePerson(char *file_path,int codPet){
+    int option;
+    if(checkCodUser("persons.bin",codUser)){
+        printf("\n#---------------------------------------------------#");
+        printf("\n|               USUARIO INEXISTENTE                 |");
+        printf("\n#---------------------------------------------------#");
+        do {
+            printf("\n#---------------------------------------------#");
+            printf("\n|  1 - Para voltar ao Menu de usuarios        |");
+            printf("\n#---------------------------------------------#");
+            printf("\n > ");
+            scanf("%d", &option);
+            if (option == 1)
+                interfaceUser();
+        } while (option != 1);
+    }
+    codUser--;
+    FILE *archive=NULL;
+    archive=fopen(file_path,"rb+");
+
+    if(archive==NULL)
+        archive=fopen(file_path,"wb+");
+    person current;
+    current.fileExist=0;
+
+    fseek(archive,sizeof (person)*codUser,SEEK_SET);
+    fwrite(&current,sizeof(person),1,archive);
+
+    fseek(archive,sizeof (person)*codUser,SEEK_SET);
+    fread(&current,sizeof(person),1,archive);
+
+    if(current.fileExist==0){
+        return 1;
+    }
+
+    return 0;
 }
 
 void listPets(char *file_path){
@@ -181,7 +218,6 @@ void changePetsUI(){
 }
 
 void changePets(char *file_path,char *Name,char *Date,char *Type,int codPet){
-    codPet--;
     Pets *current;
     current=(Pets *)malloc(sizeof(Pets));
 
@@ -195,13 +231,15 @@ void changePets(char *file_path,char *Name,char *Date,char *Type,int codPet){
     strcpy(current->datePet,Date);
     strcpy(current->typePet,Type);
     current->codPet=codPet+1;
+    current->fileExist=1;
 
     free(Name);
     free(Date);
     free(Type);
-
-    fseek(archive,sizeof(Pets)*codPet,SEEK_END);
+    printf("%d",codPet);
+    fseek(archive,sizeof(Pets)*codPet,SEEK_SET);
     fwrite(current,sizeof(Pets),1,archive);
+    printf("%s",current->namePet);
     fclose(archive);
     free(current);
 }

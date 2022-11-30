@@ -1,3 +1,6 @@
+#ifndef USER_H
+#define USER_H
+
 #include "init.h"
 
 #define sizeMaxNames 255
@@ -37,3 +40,4 @@ int compareName (const void *a, const void *b);
 
 void orderAlfUser(char *file_path);
 
+#endif //USER_H
