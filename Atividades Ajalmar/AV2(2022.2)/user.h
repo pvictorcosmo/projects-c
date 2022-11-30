@@ -27,7 +27,7 @@ void changePersonUI();
 
 void changePerson(char *file_path,char *Rg,char *Cpf,char *Name,char *Address,char *Date,char *Phone,char *Income,int codUser );
 
-void deletePerson(char *file_path,int codUser);
+int deletePerson(char *file_path,int codUser);
 
 void searchByCode(char *file_path,int codUser);
 

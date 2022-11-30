@@ -26,15 +26,19 @@ int nextCode() {
 int checkCpf(char *file_path,char *string){
     int codUser=0;
     person listPersons;
+
     FILE *Person=NULL;
     FILE *chv=NULL;
+
     chv=fopen("keyUser.chv","rb");
+
     Person=fopen(file_path,"rb+");
+
     if(Person==NULL)
         Person=fopen(file_path,"wb+");
 
     fseek(chv,0,SEEK_SET);
-    fread(&codUser,sizeof(int),1,chv);
+    fread(&codUser,sizeof(short int),1,chv);
 
     for(int i=0;i<codUser;i++){
         fseek(chv,sizeof(person)*i,SEEK_SET);
@@ -48,6 +52,7 @@ int checkCpf(char *file_path,char *string){
 }
 int insertPersonUI() {
     int option;
+
     char *Rg = malloc(sizeof(char) * 12);
     char *Cpf = malloc(sizeof(int) * 12);
     char *Name = malloc(sizeof(int) * sizeMaxNames);
@@ -89,7 +94,7 @@ int insertPersonUI() {
     fgets(Income, 20, stdin);
 
     if(strlen(Name)>0 && strlen(Cpf)==11 && strlen(Date)==8) {
-        printf("%d",checkCpf("persons.bin",Cpf));
+
         if(checkCpf("persons.bin",Cpf)) {
             insertPerson("persons.bin", Rg, Cpf, Name, Address, Date, Phone, Income);
         }
@@ -98,10 +103,11 @@ int insertPersonUI() {
             printf("\n|              USUARIO JA CADASTRADO                |");
             printf("\n#---------------------------------------------------#");
 
-            printf("\n#---------------------------------------------#");
-            printf("\n|  1 - Para voltar ao Menu de usuarios        |");
-            printf("\n#---------------------------------------------#");
+            printf("\n#---------------------------------------------------#");
+            printf("\n|  1 - Para voltar ao Menu de usuarios              |");
+            printf("\n#---------------------------------------------------#");
             printf("\n > ");
+
             scanf("%d", &option);
             if(option==1)
                 interfaceUser();
@@ -116,9 +122,10 @@ int insertPersonUI() {
     return 1;
 }
 
-int insertPerson(char *file_path,char *Rg,char *Cpf,char *Name,char *Address,char *Date,char *Phone,char *Income ){
+int insertPerson(char *file_path,char *Rg,char *Cpf,char *Name,char *Address,char *Date,char *Phone,char *Income){
     person *current;
     current=(person*)malloc(sizeof(person));
+
     FILE *archive=NULL;
     archive=fopen(file_path,"rb+");
     if(archive==NULL)
@@ -134,19 +141,20 @@ int insertPerson(char *file_path,char *Rg,char *Cpf,char *Name,char *Address,cha
     current->fileExist=1;
     current->codUser=nextCode();
 
-     free(Rg);
-     free(Cpf);
-     free(Name);
-     free(Address);
-     free(Date);
-     free(Phone);
-     free(Income);
+    free(Rg);
+    free(Cpf);
+    free(Name);
+    free(Address);
+    free(Date);
+    free(Phone);
+    free(Income);
 
-     fseek(archive,0,SEEK_END);
-     fwrite(current,sizeof(person),1,archive);
-     fclose(archive);
-     free(current);
-     return 0;
+    fseek(archive,0,SEEK_END);
+    fwrite(current,sizeof(person),1,archive);
+
+    fclose(archive);
+    free(current);
+    return 0;
 
  }
 
@@ -193,7 +201,7 @@ int insertPerson(char *file_path,char *Rg,char *Cpf,char *Name,char *Address,cha
              printf(" > Data de nascimento: %s", DateFormat);
              printf("\n > Telefone: %s", listPerson.phoneUser);
              printf(" > Rendimento mensal: R$: %s", listPerson.incomeUser);
-             printf("\n#-----------------------------------------#");
+             printf("\n#---------------------------------------------------#");
          }
 
      }
@@ -287,18 +295,42 @@ void changePerson(char *file_path,char *Rg,char *Cpf,char *Name,char *Address,ch
     free(current);
 }
 
-void deletePerson(char *file_path,int codUser){
+int deletePerson(char *file_path,int codUser){
+    int option;
+    if(checkCodUser("persons.bin",codUser)){
+        printf("\n#---------------------------------------------------#");
+        printf("\n|               USUARIO INEXISTENTE                 |");
+        printf("\n#---------------------------------------------------#");
+        do {
+            printf("\n#---------------------------------------------#");
+            printf("\n|  1 - Para voltar ao Menu de usuarios        |");
+            printf("\n#---------------------------------------------#");
+            printf("\n > ");
+            scanf("%d", &option);
+            if (option == 1)
+                interfaceUser();
+        } while (option != 1);
+    }
     codUser--;
     FILE *archive=NULL;
     archive=fopen(file_path,"rb+");
+
     if(archive==NULL)
         archive=fopen(file_path,"wb+");
-    person *current;
-    current=(person *)malloc(sizeof(person));
-    current->fileExist=0;
+    person current;
+    current.fileExist=0;
 
     fseek(archive,sizeof (person)*codUser,SEEK_SET);
-    fwrite(current,sizeof(person),1,archive);
+    fwrite(&current,sizeof(person),1,archive);
+
+    fseek(archive,sizeof (person)*codUser,SEEK_SET);
+    fread(&current,sizeof(person),1,archive);
+
+    if(current.fileExist==0){
+        return 1;
+    }
+
+    return 0;
 }
 
 void searchByCode(char *file_path,int codUser){

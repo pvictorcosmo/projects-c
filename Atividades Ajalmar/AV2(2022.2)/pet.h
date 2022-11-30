@@ -14,6 +14,8 @@ int nextCodePet();
 
 void insertPetsUI();
 
+int checkCodUser(char *file_path,int codUser);
+
 void insertPets(char *file_path,char *Name,char *Date,char *Type,int codUser);
 
 int compareNamePet (const void *a, const void *b);

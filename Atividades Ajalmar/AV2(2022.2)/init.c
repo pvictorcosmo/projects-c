@@ -10,9 +10,9 @@ void interfaceProgram() {
 
     printf("\n#------------------MENU PRINCIPAL------------------#");
     printf("\n|                                                  |");
-    printf("\n| 1- Para entrar na area de usuarios               |");
+    printf("\n| 1 - Para entrar na area de usuarios              |");
     printf("\n|                                                  |");
-    printf("\n| 2- Para entrar na area de pets                   |");
+    printf("\n| 2 - Para entrar na area de pets                  |");
     printf("\n|                                                  |");
     printf("\n|               By:Paulo Victor Cosmo              |");
     printf("\n#--------------------------------------------------#");
@@ -127,13 +127,13 @@ void interfaceProgram() {
                 printf("\n#---------------------------------------------------#");
                 printf("\n > ");
                 scanf("%d", &codUser);
+
                 deletePerson("persons.bin", codUser);
 
-                if (deletePerson) {
-                    printf("\n#---------------------------------------------------#");
-                    printf("\n|          USUARIO EXCLUIDO COM SUCESSO             |");
-                    printf("\n#---------------------------------------------------#");
-                }
+                printf("\n#---------------------------------------------------#");
+                printf("\n|          USUARIO EXCLUIDO COM SUCESSO             |");
+                printf("\n#---------------------------------------------------#");
+
                 do {
                     printf("\n#---------------------------------------------#");
                     printf("\n|  1 - Para voltar ao Menu de usuarios        |");
@@ -143,8 +143,7 @@ void interfaceProgram() {
                     if (option == 1)
                         interfaceUser();
                 } while (option != 1);
-
-                break;
+            break;
 
             case (list_users):
                 listPersons(listPerson, "persons.bin");
