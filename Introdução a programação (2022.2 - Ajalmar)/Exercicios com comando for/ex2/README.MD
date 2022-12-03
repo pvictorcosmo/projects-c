@@ -9,7 +9,7 @@
 
 ## Descrição do projeto 
 
--Referência: "Faça um programa em C que leia um número inteiro positivo n.
+- Referência: "Faça um programa em C que leia um número inteiro positivo n.
  Em seguida, leia n números inteiros positivos e compute (e imprima) 
 o fatorial de cada um desses n números lidos."
   
