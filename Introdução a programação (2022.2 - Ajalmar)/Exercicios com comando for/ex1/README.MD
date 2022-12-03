@@ -1,7 +1,3 @@
-
-
-
-
 <h1 align="center"> ATIVIDADE 1 </h1>
 
 <p align="center">
