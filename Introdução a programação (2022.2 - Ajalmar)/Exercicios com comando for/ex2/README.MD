@@ -13,8 +13,6 @@
  Em seguida, leia n números inteiros positivos e compute (e imprima) 
 o fatorial de cada um desses n números lidos."
   
-- Este programa vai ler um numero do usuario e vai contar todos os caracteres e dizer qual deles é par,impar ou primo.
-
 - Este programa vai fazer o fatorial de n numeros e faz o fatorial deles,onde n é informado pelo usuário.
 
 - Este programa vai pegar informações do usuário utilizando argv[], então você precisa colocar essas informações
