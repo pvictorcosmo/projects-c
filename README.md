@@ -2,8 +2,10 @@
 
 <p align="center">
   🛠️Alguns projetos e estudos feitos na linguagem C.🛠️
+  Estão todos detalhados com um breve resumo, espero que entendam e absorvam o conteúdo!
 </p>
-- Estão todos detalhados com um breve resumo, espero que entendam e absorvam o conteúdo!
+
+ 
 
 
  
