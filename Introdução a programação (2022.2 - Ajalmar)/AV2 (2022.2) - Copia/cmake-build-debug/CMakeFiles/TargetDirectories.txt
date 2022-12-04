@@ -1,3 +1,0 @@
-C:/Users/Rosemary/Documents/GitHub/projects-c/Introdução a programação (2022.2 - Ajalmar)/AV2 (2022.2) - Copia/cmake-build-debug/CMakeFiles/AV2_2022_22_.dir
-C:/Users/Rosemary/Documents/GitHub/projects-c/Introdução a programação (2022.2 - Ajalmar)/AV2 (2022.2) - Copia/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/Rosemary/Documents/GitHub/projects-c/Introdução a programação (2022.2 - Ajalmar)/AV2 (2022.2) - Copia/cmake-build-debug/CMakeFiles/rebuild_cache.dir
