@@ -22,4 +22,4 @@ Imprima o resultado ao final. Por exemplo,  o programa deve informar que o núme
 # Autores
 
 | [<img src="https://avatars.githubusercontent.com/u/37356058?v=4" width=115><br><sub>Paulo Victor Cosmo</sub>](https://github.com/pvictorcosmo) |
-| :---: | :---: | :---: |
+| :---: |
