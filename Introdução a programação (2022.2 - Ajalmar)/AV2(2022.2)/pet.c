@@ -45,7 +45,6 @@ int checkCodPet(char *file_path,int TestCodPet){
 
     fseek(chv,0,SEEK_SET);
     fread(&codPet,sizeof(int),1,chv);
-    printf("%d",codPet);
     for(int i=0;i<codPet;i++){
 
         if(TestCodPet==i+1){

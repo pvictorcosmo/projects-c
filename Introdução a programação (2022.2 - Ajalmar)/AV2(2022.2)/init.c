@@ -3,6 +3,7 @@
 #include "pet.h"
 
 void interfaceProgram() {
+    system("cls");
     int option;
     enum options {
         users = 1, pets
@@ -33,6 +34,7 @@ void interfaceProgram() {
 }
 
     void interfaceUser() {
+        system("cls");
         person listPerson;
         char *TypePet = (char *) malloc(sizeof(char) * 50), *Names;
         int option, codUser, codPet;
@@ -214,6 +216,7 @@ void interfaceProgram() {
     }
 
     void interfacePets(){
+        system("cls");
         int option, codUser, codPet;
         enum options {
             add_pets = 1,
@@ -282,7 +285,7 @@ void interfaceProgram() {
 
             case (delete_pets):
                 printf("\n#---------------------------------------------------#");
-                printf("\n|   DIGITE O CODIGO DO USUARIO QUE DESEJA EXCLUIR   |");
+                printf("\n|     DIGITE O CODIGO DO PET QUE DESEJA EXCLUIR     |");
                 printf("\n#---------------------------------------------------#");
                 printf("\n > ");
                 scanf("%d", &codPet);
@@ -290,7 +293,7 @@ void interfaceProgram() {
                 deletePets("pets.bin", codPet);
 
                 printf("\n#---------------------------------------------------#");
-                printf("\n|          USUARIO EXCLUIDO COM SUCESSO             |");
+                printf("\n|             PET EXCLUIDO COM SUCESSO              |");
                 printf("\n#---------------------------------------------------#");
 
                 do {

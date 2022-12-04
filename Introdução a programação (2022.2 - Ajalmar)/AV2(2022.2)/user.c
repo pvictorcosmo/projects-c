@@ -51,6 +51,7 @@ int checkCpf(char *file_path,char *string){
     return 1;
 }
 int insertPersonUI() {
+    system("cls");
     int option;
 
     char *Rg = malloc(sizeof(char) * 12);
@@ -396,7 +397,7 @@ void searchByTypePet(char *file_path, char *Type){
         fseek(FilePets, sizeof(Pets) * i, SEEK_SET);
         fread(&listPets, sizeof(Pets), 1, FilePets);
 
-        if(!strcmp(listPets.typePet,Type)){
+        if(!strcmp(listPets.typePet,Type) && strlen(listPets.namePet)!=0){
             fseek(FileUser,sizeof(person)*i,SEEK_SET);
             fread(&listUser,sizeof(person),1,FileUser);
 
