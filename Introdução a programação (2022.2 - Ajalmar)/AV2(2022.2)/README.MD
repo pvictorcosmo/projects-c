@@ -1,4 +1,25 @@
+<h1 align="center"> ATIVIDADE 1 </h1>
+
+<p align="center">
+<img src="http://img.shields.io/static/v1?label=STATUS&message=CONCLUIDO&color=GREEN&style=for-the-badge"/>
+</p>
+
+## Descrição do projeto 
+
+- Referência: "Faça um programa em C que leia um número e informe quantos dígitos pares e ímpares existem em tal número. 
+Imprima o resultado ao final. Por exemplo,  o programa deve informar que o número 134752 lido tem 4 números 
+ímpares e 2 números pares."
+  
+- Este programa vai ler um numero do usuario e vai contar todos os caracteres e dizer qual deles é par,impar ou primo
+
+----
+
+## ✔️ Técnicas e tecnologias utilizadas
+
+- ``C``
+
+
 # Autores
 
-| [<img src="https://avatars.githubusercontent.com/u/37356058?v=4" width=115><br><sub>Camila Fernanda Alves</sub>](https://github.com/camilafernanda) |  [<img src="https://avatars.githubusercontent.com/u/30351153?v=4" width=115><br><sub>Guilherme Lima</sub>](https://github.com/guilhermeonrails) |  [<img src="https://avatars.githubusercontent.com/u/8989346?v=4" width=115><br><sub>Alex Felipe</sub>](https://github.com/alexfelipe) |
+| [<img src="https://avatars.githubusercontent.com/u/37356058?v=4" width=115><br><sub>Paulo Victor Cosmo</sub>](https://github.com/pvictorcosmo) |
 | :---: | :---: | :---: |
