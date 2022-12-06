@@ -226,7 +226,6 @@ int insertPerson(char *file_path,char *Rg,char *Cpf,char *Name,char *Address,cha
      printf("\n > ");
      scanf("%d",&codUser);
      codUser--;
-     printf("%d",codUser);
 
      printf("\n > Nome:");
      fflush(stdin);
@@ -325,6 +324,7 @@ int deletePerson(char *file_path,int codUser){
 
     if(archive==NULL)
         archive=fopen(file_path,"wb+");
+
     person current;
     current.fileExist=0;
 
