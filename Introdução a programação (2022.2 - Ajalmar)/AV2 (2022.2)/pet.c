@@ -230,7 +230,6 @@ void listPets(char *file_path){
     }
     while(fread( &listPersons,sizeof(person),1,persons) != 0) {
         if (listPersons.fileExist == 1) {
-            printf("pessoa:%d e file:%d", listPersons.codUser, listPersons.fileExist);
             while (fread(&listPets, sizeof(Pets), 1, pets) != 0) {
 
                 if (listPets.fileExist == 1) {

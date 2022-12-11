@@ -465,16 +465,16 @@ void orderAlfUser(char *file_path){
         format(allPersons[i].cpfUser,"###.###.###-##",cpfFormat);
         format(allPersons[i].dateUser,"##/##/####",DateFormat);
         if (allPersons[i].fileExist == 1) {
-            printf("\n#-----------------------------------------#");
-            printf("\n| > Codigo: %.3d                           |", allPersons[i].codUser);
-            printf("\n#-----------------------------------------#");
+            printf("\n#---------------------------------------------#");
+            printf("\n| > Codigo: %.3d                               |", allPersons[i].codUser);
+            printf("\n#---------------------------------------------#");
             printf("\n > Nome: %s", allPersons[i].nameUser);
             printf(" > Cpf: %s", cpfFormat);
             printf("\n > Endereco: %s", allPersons[i].addressUser);
             printf(" > Data de nascimento: %s", DateFormat);
             printf("\n > Telefone: %s", allPersons[i].phoneUser);
             printf(" > Rendimento mensal: %s", allPersons[i].incomeUser);
-            printf("\n#-----------------------------------------#");
+            printf("#---------------------------------------------#");
         }
         free(DateFormat);
         free(cpfFormat);
