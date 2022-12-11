@@ -20,6 +20,8 @@ int checkCodUser(char *file_path,int codUser);
 
 int checkCodPet(char *file_path,int codUser);
 
+int checkName(char *file_path,char *namePet,int codUser);
+
 void insertPets(char *file_path,char *Name,char *Date,char *Type,int codUser);
 
 int deletePets(char *file_path,int codPet);

@@ -14,9 +14,7 @@ int nextCodePet() {
 
     fseek(chv, 0, SEEK_SET);
     fwrite(&codPet, sizeof(int), 1, chv);
-
-    fseek(chv, 0, SEEK_SET);
-    fread(&codPet, sizeof(int), 1, chv);
+    fclose(chv);
     return codPet;
 }
 
@@ -25,16 +23,14 @@ int checkCodUser(char *file_path,int TestCodUser){
     int codUser=0;
     FILE *chv=NULL;
     chv=fopen(file_path,"rb");
-
     fseek(chv,0,SEEK_SET);
     fread(&codUser,sizeof(int),1,chv);
-
-    for(int i=0;i<codUser;i++){
-
-        if(TestCodUser==i+1){
-            return 0;
+    for (int i=1;i<=codUser;i++){
+        if(i==TestCodUser){
+            return 0; //Coduser exists
         }
     }
+
     return 1;
 }
 int checkCodPet(char *file_path,int TestCodPet){
@@ -45,6 +41,7 @@ int checkCodPet(char *file_path,int TestCodPet){
 
     fseek(chv,0,SEEK_SET);
     fread(&codPet,sizeof(int),1,chv);
+
     for(int i=0;i<codPet;i++){
 
         if(TestCodPet==i+1){
@@ -82,22 +79,55 @@ void insertPetsUI() {
     scanf("%d", &codUser);
 
     if (!checkCodUser("keyUser.chv", codUser)) {
-        insertPets("pets.bin", Name, Date, Type, codUser);
+        if(checkName("pets.bin",Name,codUser)) {
+            insertPets("pets.bin", Name, Date, Type, codUser);
+        }
+        else{
+            printf("\n#---------------------------------------------------#");
+            printf("\n|             NOME DE PET JA CADASTRADO             |");
+            printf("\n#---------------------------------------------------#");
+            printf("\n#---------------------------------------------------#");
+            printf("\n|  1 - Para voltar ao Menu de pets                  |");
+            printf("\n#---------------------------------------------------#");
+            printf("\n > ");
+            scanf("%d", &option);
+            if (option == 1)
+                interfacePets();
+        }
     }
     else {
         printf("\n#---------------------------------------------------#");
         printf("\n|                USUARIO NAO EXISTE                 |");
         printf("\n#---------------------------------------------------#");
 
-        printf("\n#---------------------------------------------#");
-        printf("\n|  1 - Para voltar ao Menu de pets            |");
-        printf("\n#---------------------------------------------#");
+        printf("\n#---------------------------------------------------#");
+        printf("\n|  1 - Para voltar ao Menu de pets                  |");
+        printf("\n#---------------------------------------------------#");
         printf("\n > ");
         scanf("%d", &option);
         if (option == 1)
             interfacePets();
 
     }
+}
+
+int checkName(char *file_path,char *namePet,int codUser){
+    FILE *checkNames;
+    Pets Current;
+    checkNames=fopen(file_path,"rb");
+
+    while(fread(&Current,sizeof(Pets),1,checkNames) !=0){
+        if(Current.fileExist==1) {
+            if (Current.codUser == codUser) {
+                if (strcmp(namePet, Current.namePet)==0) {
+                    return 0; // name exists
+                }
+            }
+        }
+
+    }
+    return 1;
+
 }
 
 void insertPets(char *file_path,char *Name,char *Date,char *Type,int codUser){
@@ -126,6 +156,9 @@ void insertPets(char *file_path,char *Name,char *Date,char *Type,int codUser){
     fwrite(current,sizeof(Pets),1,archive);
     fclose(archive);
     free(current);
+    printf("\n#---------------------------------------------------#");
+    printf("\n|             PET INSERIDO COM SUCESSO              |");
+    printf("\n#---------------------------------------------------#");
 
 }
 
@@ -158,7 +191,7 @@ int deletePets(char *file_path,int codPet){
     fseek(archive,sizeof (Pets)*codPet,SEEK_SET);
     fwrite(&current,sizeof(Pets),1,archive);
 
-    fseek(archive,sizeof (Pets)*codPet,SEEK_SET);
+
     fread(&current,sizeof(Pets),1,archive);
 
     if(current.fileExist==0){
@@ -169,19 +202,22 @@ int deletePets(char *file_path,int codPet){
 }
 
 void listPets(char *file_path){
+
     FILE *pets;
     FILE *persons;
     FILE *chvPet=NULL;
+
     int codPet=0;
     Pets listPets;
     person listPersons;
 
     pets=fopen(file_path,"rb");
-    persons=fopen("persons.bin","rb");
     chvPet=fopen("keyPets.chv","rb");
+    persons=fopen("persons.bin","rb");
 
     fseek(chvPet,0,SEEK_SET);
     fread(&codPet,sizeof(int),1,chvPet);
+
     if(codPet==0){
         printf("\n#---------------------------------------------------#");
         printf("\n|                 NAO HA CADASTROS                  |");
@@ -192,25 +228,28 @@ void listPets(char *file_path){
         printf("\n|                LISTA DE CADASTROS                 |");
         printf("\n#---------------------------------------------------#");
     }
+    while(fread( &listPersons,sizeof(person),1,persons) != 0) {
+        if (listPersons.fileExist == 1) {
+            printf("pessoa:%d e file:%d", listPersons.codUser, listPersons.fileExist);
+            while (fread(&listPets, sizeof(Pets), 1, pets) != 0) {
 
-    for(int j=0;j<codPet;j++)
-    {
-        fseek(pets, sizeof(Pets) * j, SEEK_SET);
-        fread(&listPets, sizeof(Pets), 1, pets);
+                if (listPets.fileExist == 1) {
+                    printf("\n#-----------------------------------------#");
+                    printf("\n| > Codigo: %.3d                           |", listPets.codPet);
+                    printf("\n#-----------------------------------------#");
+                    printf("\n > Nome do pet: %s", listPets.namePet);
+                    printf(" > Data de nascimento do pet: %s", listPets.datePet);
+                    printf(" > Tipo do pet: %s", listPets.typePet);
+                    printf(" > Codigo do usuario: %.3d", listPets.codUser);
+                }
 
-        fseek(persons, sizeof(person) * j, SEEK_SET);
-        fread(&listPersons, sizeof(person), 1, persons);
 
-        if(listPets.fileExist==1 && listPersons.fileExist==1 ) {
-            printf("\n#-----------------------------------------#");
-            printf("\n| > Codigo: %.3d                           |", listPets.codPet);
-            printf("\n#-----------------------------------------#");
-            printf("\n > Nome do pet: %s", listPets.namePet);
-            printf(" > Data de nascimento do pet: %s", listPets.datePet);
-            printf(" > Tipo do pet: %s", listPets.typePet);
-            printf(" > Codigo do usuario: %.3d", listPets.codUser);
+            }
         }
     }
+    fclose(pets);
+    fclose(persons);
+    fclose(chvPet);
 }
 
 void changePetsUI(){

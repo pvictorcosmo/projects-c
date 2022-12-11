@@ -5,7 +5,7 @@
 
 #define sizeMaxNames 255
 typedef struct User{
-  int codUser;
+  int  codUser;
   char nameUser[sizeMaxNames];
   char cpfUser[12];
   char rgUser[12];

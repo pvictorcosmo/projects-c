@@ -256,9 +256,6 @@ void interfaceProgram() {
             case (add_pets):
                 insertPetsUI();
 
-                printf("\n#---------------------------------------------------#");
-                printf("\n|             PET INSERIDO COM SUCESSO              |");
-                printf("\n#---------------------------------------------------#");
                 do {
                     printf("\n#---------------------------------------------#");
                     printf("\n|  1 - Para voltar ao Menu de pets            |");
