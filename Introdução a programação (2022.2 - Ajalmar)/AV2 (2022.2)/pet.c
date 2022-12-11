@@ -205,20 +205,21 @@ void listPets(char *file_path){
 
     FILE *pets;
     FILE *persons;
-    FILE *chvPet=NULL;
 
-    int codPet=0;
+    int countPets=0;
     Pets listPets;
     person listPersons;
 
     pets=fopen(file_path,"rb");
-    chvPet=fopen("keyPets.chv","rb");
     persons=fopen("persons.bin","rb");
 
-    fseek(chvPet,0,SEEK_SET);
-    fread(&codPet,sizeof(int),1,chvPet);
+    while( fread( &listPets,sizeof(Pets),1,pets) != 0 ) {
+        if(listPets.fileExist==1) {
+            countPets++;
+        }
+    }
 
-    if(codPet==0){
+    if(countPets == 0){
         printf("\n#---------------------------------------------------#");
         printf("\n|                 NAO HA CADASTROS                  |");
         printf("\n#---------------------------------------------------#");
@@ -228,7 +229,8 @@ void listPets(char *file_path){
         printf("\n|                LISTA DE CADASTROS                 |");
         printf("\n#---------------------------------------------------#");
     }
-    while(fread( &listPersons,sizeof(person),1,persons) != 0) {
+    fseek(pets,0,SEEK_SET);
+    while( fread( &listPersons,sizeof(person),1,persons) != 0 ) {
         if (listPersons.fileExist == 1) {
             while (fread(&listPets, sizeof(Pets), 1, pets) != 0) {
 
@@ -241,18 +243,17 @@ void listPets(char *file_path){
                     printf(" > Tipo do pet: %s", listPets.typePet);
                     printf(" > Codigo do usuario: %.3d", listPets.codUser);
                 }
-
-
             }
         }
     }
+
     fclose(pets);
     fclose(persons);
-    fclose(chvPet);
 }
 
 void changePetsUI(){
     int codPet,codUser;
+
     char *Name = malloc(sizeof(int) * sizeMaxNames);
     char *Date = malloc(sizeof(char) * 9);
     char *Type = malloc(sizeof(char) * 50);
@@ -275,6 +276,7 @@ void changePetsUI(){
     printf(" > Tipo do pet:");
     fflush(stdin);
     fgets(Type, 50, stdin);
+
     //fgets é pra pegar as strings com espaço, o fflush serve pra tirar todo o lixo da string
 
     printf("\n#-----------------------------------------#");
@@ -289,10 +291,11 @@ void changePetsUI(){
 
 void changePets(char *file_path,char *Name,char *Date,char *Type,int codUser,int codPet){
     Pets *current;
-    current=(Pets *)malloc(sizeof(Pets));
+    current = (Pets *)malloc(sizeof(Pets));
 
     FILE *archive=NULL;
     archive=fopen(file_path,"rb+");
+
     if(archive==NULL)
         archive=fopen(file_path,"wb+");
 
@@ -307,9 +310,11 @@ void changePets(char *file_path,char *Name,char *Date,char *Type,int codUser,int
     free(Name);
     free(Date);
     free(Type);
+
     fseek(archive,sizeof(Pets)*codPet,SEEK_SET);
     fwrite(current,sizeof(Pets),1,archive);
     fclose(archive);
+
     free(current);
 }
 
@@ -339,7 +344,7 @@ void searchByPetCode(char *file_path,int codPet) {
     }
 }
 
-int searchByUserCode(char *file_path,int codUser){
+int searchByUserCode (char *file_path,int codUser){
 
     FILE *pets;
     FILE *chvPet;

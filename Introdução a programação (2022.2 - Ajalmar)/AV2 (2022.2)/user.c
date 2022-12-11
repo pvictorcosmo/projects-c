@@ -164,16 +164,17 @@ int insertPerson(char *file_path,char *Rg,char *Cpf,char *Name,char *Address,cha
      char *cpfFormat=(char *)malloc(sizeof(char)*14);
      char *DateFormat=(char *)malloc(sizeof(char)*12);
      FILE *archive;
-     FILE *chvUser;
-     int codUser=0,i=0;
+     register int i=0,countPersons=0;
 
      archive=fopen(file_path,"rb");
-     chvUser=fopen("keyUser.chv","rb");
 
-     fseek(chvUser,0,SEEK_SET);
-     fread(&codUser,sizeof(int),1,chvUser);
+     while( fread( &listPerson,sizeof(person),1,archive) != 0 ) {
+         if(listPerson.fileExist==1) {
+             countPersons++;
+         }
+     }
 
-     if(codUser==0){
+     if(countPersons==0){
          printf("\n#---------------------------------------------------#");
          printf("\n|                 NAO HA CADASTROS                  |");
          printf("\n#---------------------------------------------------#");
@@ -184,6 +185,7 @@ int insertPerson(char *file_path,char *Rg,char *Cpf,char *Name,char *Address,cha
          printf("\n#---------------------------------------------------#");
      }
 
+     fseek(archive,0,SEEK_SET);
      while(fread(&listPerson, sizeof(person), 1, archive) != 0){
 
          format(listPerson.cpfUser,"###.###.###-##",cpfFormat);
@@ -200,7 +202,6 @@ int insertPerson(char *file_path,char *Rg,char *Cpf,char *Name,char *Address,cha
              printf("\n > Telefone: %s", listPerson.phoneUser);
              printf(" > Rendimento mensal: R$: %s", listPerson.incomeUser);
              printf("\n#-----------------------------------------#");
-             i++;
 
          }
 
@@ -276,9 +277,6 @@ void changePerson(char *file_path,char *Rg,char *Cpf,char *Name,char *Address,ch
         archive=fopen(file_path,"wb+");
     person *current;
     current=(person*)malloc(sizeof(person));
-
-
-   // fclose(archive);
 
     strcpy(current->rgUser,Rg);
     strcpy(current->cpfUser,Cpf);

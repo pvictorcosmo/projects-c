@@ -15,7 +15,6 @@ void interfaceProgram() {
     printf("\n|                                                  |");
     printf("\n| 2 - Para entrar na area de pets                  |");
     printf("\n|                                                  |");
-    printf("\n|               By:Paulo Victor Cosmo              |");
     printf("\n#--------------------------------------------------#");
     do {
         printf("\n > ");
@@ -67,7 +66,6 @@ void interfaceProgram() {
         printf("\n|                                                  |");
         printf("\n| 8 - Voltar ao Menu principal                     |");
         printf("\n|                                                  |");
-        printf("\n|               By:Paulo Victor Cosmo              |");
         printf("\n#--------------------------------------------------#");
         printf("\n > ");
         scanf("%d", &option);
@@ -247,7 +245,6 @@ void interfaceProgram() {
         printf("\n|                                                  |");
         printf("\n| 8 - Voltar ao Menu principal                     |");
         printf("\n|                                                  |");
-        printf("\n|               By:Paulo Victor Cosmo              |");
         printf("\n#--------------------------------------------------#");
         printf("\n > ");
         scanf("%d", &option);
